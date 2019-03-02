@@ -1,0 +1,73 @@
+﻿<Window x:Class="RandevouWpfClient.Views.UserFriendsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandevouWpfClient.Views"
+        xmlns:viewModels ="clr-namespace:RandevouWpfClient.ViewModels"
+        mc:Ignorable="d"
+        Title="UserFriends" Height="450" Width="400">
+    <Window.DataContext>
+        <viewModels:UserFriendsViewModel />
+    </Window.DataContext>
+    <StackPanel>
+        <TextBlock Text="Invitations to friends" Padding="10,10" Background="Pink" FontFamily="DejaVu Math TeX Gyre" FontSize="18" Foreground="#FFF9F4F4" />
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="70" />
+            </Grid.ColumnDefinitions>
+        <ListView x:Name="UsersFriendsInvitationsListView" 
+                  ItemsSource="{Binding Invitations}"
+                  SelectedItem="{Binding InvitationChoosenUser, Mode=TwoWay}"
+                  HorizontalAlignment="Center"
+                  Grid.Row="0" Grid.Column="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel VerticalAlignment="Center" >
+                        <TextBlock Width="100" VerticalAlignment="Center" TextAlignment="Center" Text="{Binding Path=DisplayName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <Button x:Name="AddSelectedToFriendBtn" Height="30" Grid.Column="1" Content="Add" Background="BlueViolet" Foreground="Pink" Command="{Binding AddToFriendCommand}" />
+            <Button x:Name="DeleteSelectedInvitationBtn" Height="30" Grid.Column="2" Content="Delete" Background="BlueViolet" Foreground="Pink" Command="{Binding RemoveInvitationCommand}" />
+            <Button x:Name="ShowSelectedToFriendBtn" Margin="10,0,0,0" Height="30" Grid.Column="3" Content="Show user" Background="Pink" Foreground="MediumVioletRed" Command="{Binding ShowUserInvitationCommand }" />
+        </Grid>
+        <TextBlock Text="Friends" Background="PaleVioletRed" Padding="10,10" FontFamily="DejaVu Math TeX Gyre" FontSize="18" Foreground="#FFF9F4F4" >
+          
+        </TextBlock>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ListView x:Name="UsersFriendsListView" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"
+                  ItemsSource="{Binding Friends}" SelectedItem="{Binding FriendsChoosenUser}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                            <TextBlock  Width="100" Text="{Binding Path=DisplayName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <Button x:Name="DeleteSelectedFriendBtn"  Height="30" Grid.Column="1" Content="Delete" Background="BlueViolet" Foreground="Pink" Command="{Binding RemoveFriendCommand}" />
+        <Button x:Name="ShowSelectedFriendBtn" Margin="10,0,0,0" Height="30" Grid.Column="2" Content="Show user" Background="Pink" Foreground="MediumVioletRed" Command="{Binding ShowUserFriendCommand}" />
+            
+        </Grid>
+    </StackPanel>
+</Window>

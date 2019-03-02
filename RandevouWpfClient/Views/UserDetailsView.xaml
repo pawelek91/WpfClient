@@ -1,0 +1,60 @@
+﻿<Window x:Class="RandevouWpfClient.Views.UserDetailsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandevouWpfClient.Views"
+        xmlns:vm="clr-namespace:RandevouWpfClient.ViewModels"
+        mc:Ignorable="d"
+        Title="UserDetailsView" Height="450" Width="800" 
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        >
+  
+    <StackPanel >
+    <TextBlock Text="User info" FontSize="16" Background="Pink" Foreground="White" />
+        
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Nazwa" Grid.Column="0" Grid.Row="0" />
+            <Label Content="Data urodzenia" Grid.Column="0" Grid.Row="1" />
+            <Label Content="Płeć" Grid.Column="0" Grid.Row="2" />
+            <Label Content="Województwo" Grid.Column="0" Grid.Row="3" />
+            <Label Content="Miasto" Grid.Column="0" Grid.Row="4" />
+            <Label Content="Kolor oczu" Grid.Column="0" Grid.Row="5" />
+            <Label Content="Kolor włosów" Grid.Column="0" Grid.Row="6" />
+            <Label Content="Wzrost" Grid.Column="0" Grid.Row="7" />
+            <Label Content="Waga" Grid.Column="0" Grid.Row="8" />
+            <Label Content="Tatuaże" Grid.Column="0" Grid.Row="9" />
+
+            <Label Content="{Binding Path=User.DisplayName}" Grid.Column="1" Grid.Row="0" />
+            <Label Content="{Binding Path=User.BirthDate}" Grid.Column="1" Grid.Row="1" />
+            <Label Content="{Binding Path=User.Gender}" Grid.Column="1" Grid.Row="2" />
+            <Label Content="Województwo" Grid.Column="1" Grid.Row="3" />
+            <Label Content="Miasto" Grid.Column="1" Grid.Row="4" />
+            <Label Content="Kolor oczu" Grid.Column="1" Grid.Row="5" />
+            <Label Content="Kolor włosów" Grid.Column="1" Grid.Row="6" />
+            <Label Content="Wzrost" Grid.Column="1" Grid.Row="7" />
+            <Label Content="Waga" Grid.Column="1" Grid.Row="8" />
+            <Label Content="Tatuaże" Grid.Column="1" Grid.Row="9" />
+        </Grid>
+    </StackPanel>
+</Window>

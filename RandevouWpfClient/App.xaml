@@ -1,0 +1,9 @@
+﻿<Application x:Class="RandevouWpfClient.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RandevouWpfClient"
+             xmlns:vm="clr-namespace:RandevouWpfClient.ViewModels"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+    </Application.Resources>
+</Application>
