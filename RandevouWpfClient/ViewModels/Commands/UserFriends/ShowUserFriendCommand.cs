@@ -1,5 +1,6 @@
 ﻿using RandevouApiCommunication.Users;
 using RandevouWpfClient.Models;
+using RandevouWpfClient.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
 {
     public class ShowUserFriendCommand : ICommand
     {
-        private UserFriendsViewModel _vm;
+        private readonly UserFriendsViewModel _vm;
+        private readonly UserDetailsViewModel _userVm;
         public ShowUserFriendCommand(UserFriendsViewModel vm)
         {
             _vm = vm;
+            _userVm = new UserDetailsViewModel();
         }
         public event EventHandler CanExecuteChanged;
 
@@ -30,6 +33,10 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
                 ResultHandler.Message("Not any user has been selected");
                 return;
             }
+
+            _userVm.User = _vm.FriendsChoosenUser;
+            var window = new UserDetailsView(_userVm);
+            window.Show();
         }
     }
 }

@@ -32,5 +32,11 @@ namespace RandevouWpfClient
             var v = new UserFriendsView();
             v.Show();
         }
+
+        private void FindUsersBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var v = new UserSearchView();
+            v.Show();
+        }
     }
 }

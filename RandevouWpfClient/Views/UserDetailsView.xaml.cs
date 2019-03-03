@@ -39,11 +39,10 @@ namespace RandevouWpfClient.Views
             }
         }
 
-        public UserDetailsView(UsersDto dto)
+        public UserDetailsView(UserDetailsViewModel vm)
         {
-            
+            DataContext = vm;
             InitializeComponent();
-            User = dto;
         }
     }
 }

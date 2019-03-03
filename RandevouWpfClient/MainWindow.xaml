@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <Button x:Name="showFriends" Click="ShowFriends_Click" Content="show friends"/>
+        <Button x:Name="showFriendsBTN" Click="ShowFriends_Click" Content="show friends"/>
+        <Button x:Name="findUsersBTN" Click="FindUsersBTN_Click" Content="find users"/>
     </StackPanel>
 </Window>

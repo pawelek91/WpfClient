@@ -13,10 +13,11 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
     public class ShowUserInvitationCommand : ICommand
     {
         private readonly UserFriendsViewModel _vm;
+        private readonly UserDetailsViewModel _userVm;
         public ShowUserInvitationCommand(UserFriendsViewModel vm)
         {
             _vm = vm;
-            
+            _userVm = new UserDetailsViewModel();
         }
         public event EventHandler CanExecuteChanged
         {
@@ -38,8 +39,8 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
                 return;
             }
 
-            
-            var view = new UserDetailsView(_vm.InvitationChoosenUser);
+            _userVm.User = _vm.InvitationChoosenUser;
+            var view = new UserDetailsView(_userVm);
             view.Show();
         }
     }

@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:RandevouWpfClient.Views"
         xmlns:vm="clr-namespace:RandevouWpfClient.ViewModels"
         mc:Ignorable="d"
-        Title="UserDetailsView" Height="450" Width="800" 
-        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-        >
-  
+        Title="UserDetailsView" Height="450" Width="800" >
+
     <StackPanel >
     <TextBlock Text="User info" FontSize="16" Background="Pink" Foreground="White" />
         
@@ -48,13 +46,13 @@
             <Label Content="{Binding Path=User.DisplayName}" Grid.Column="1" Grid.Row="0" />
             <Label Content="{Binding Path=User.BirthDate}" Grid.Column="1" Grid.Row="1" />
             <Label Content="{Binding Path=User.Gender}" Grid.Column="1" Grid.Row="2" />
-            <Label Content="Województwo" Grid.Column="1" Grid.Row="3" />
-            <Label Content="Miasto" Grid.Column="1" Grid.Row="4" />
-            <Label Content="Kolor oczu" Grid.Column="1" Grid.Row="5" />
-            <Label Content="Kolor włosów" Grid.Column="1" Grid.Row="6" />
-            <Label Content="Wzrost" Grid.Column="1" Grid.Row="7" />
-            <Label Content="Waga" Grid.Column="1" Grid.Row="8" />
-            <Label Content="Tatuaże" Grid.Column="1" Grid.Row="9" />
+            <Label Content="{Binding Path=UserDetails.Region}" Grid.Column="1" Grid.Row="3" />
+            <Label Content="{Binding Path=UserDetails.City}" Grid.Column="1" Grid.Row="4" />
+            <Label Content="{Binding Path=UserDetails.EyesColor}"  Grid.Column="1" Grid.Row="5" />
+            <Label Content="{Binding Path=UserDetails.HairColor}" Grid.Column="1" Grid.Row="6" />
+            <Label Content="{Binding Path=UserDetails.Width}" Grid.Column="1" Grid.Row="7" />
+            <Label Content="{Binding Path=UserDetails.Heigth}" Grid.Column="1" Grid.Row="8" />
+            <Label Content="{Binding Path=UserDetails.Tattos}" Grid.Column="1" Grid.Row="9" />
         </Grid>
     </StackPanel>
 </Window>

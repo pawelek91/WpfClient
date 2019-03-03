@@ -64,6 +64,8 @@
     </ApplicationDefinition>
     <Compile Include="Models\ResultHandler.cs" />
     <Compile Include="ViewModels\Commands\LoginCommand.cs" />
+    <Compile Include="ViewModels\Commands\UserFinder\FindUsersCommand.cs" />
+    <Compile Include="ViewModels\Commands\UserFinder\ShowSelectedUserCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\AddToFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\RemoveFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\RemoveInvitationCommand.cs" />
@@ -72,7 +74,8 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PrimaryViewModel.cs" />
     <Compile Include="ViewModels\UserFriendsViewModel.cs" />
-    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\UserDetailsViewModel.cs" />
+    <Compile Include="ViewModels\UserSearchViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
