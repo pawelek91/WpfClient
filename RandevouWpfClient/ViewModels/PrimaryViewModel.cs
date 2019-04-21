@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RandevouWpfClient.ViewModels
 {
@@ -19,11 +20,16 @@ namespace RandevouWpfClient.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void OnChanged(string propertyName)
+        public void OnChanged(string propertyName, bool withCommands = true)
         {
             if(PropertyChanged!=null)
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            { 
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                if(withCommands)
+                    CommandManager.InvalidateRequerySuggested();
+            }
         }
+
 
     }
 }

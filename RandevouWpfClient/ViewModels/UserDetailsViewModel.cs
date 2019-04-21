@@ -1,5 +1,4 @@
 ﻿using RandevouApiCommunication.Users;
-using RandevouWpfClient.Api.Mock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +33,6 @@ namespace RandevouWpfClient.ViewModels
             if (User == null)
                 return;
 
-            UserDetails = MockClass.AllUsersDetails.Where(x => x.UserId == User.Id).FirstOrDefault();
         }
 
 

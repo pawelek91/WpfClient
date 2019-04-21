@@ -22,21 +22,16 @@ namespace RandevouWpfClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void ShowFriends_Click(object sender, RoutedEventArgs e)
+        private void RegisterUserBTN_Click(object sender, RoutedEventArgs e)
         {
-            var v = new UserFriendsView();
-            v.Show();
-        }
-
-        private void FindUsersBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var v = new UserSearchView();
-            v.Show();
+            var window = new RegisterView(new ViewModels.RegisterViewModel());
+            window.Show();
         }
     }
 }

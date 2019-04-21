@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RandevouWpfClient.ViewModels;
+using RandevouWpfClient.ViewModels.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,26 @@ namespace RandevouWpfClient.Views
     /// </summary>
     public partial class LoginView : Window
     {
-        public LoginView()
+        public LoginData LoginData { get; set; }
+        public LoginView(LoginData loginData)
         {
             InitializeComponent();
+            
+            LoginData = loginData;
         }
+
+        private void LoginBTN_Click(object sender, RoutedEventArgs e)
+        {
+            LoginData.Username = loginNameTxtBox.Text;
+            LoginData.Password = loginPasswordTxtBox.Password;
+            this.DialogResult = true;
+            this.Close();
+        }
+    }
+
+    public class LoginData
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

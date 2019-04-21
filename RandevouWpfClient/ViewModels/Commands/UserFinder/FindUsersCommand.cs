@@ -1,5 +1,4 @@
-﻿using RandevouWpfClient.Api.Mock;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,10 +32,6 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFinder
             //api => find users...
             var rand = new Random().Next(0, 4);
 
-            var users = MockClass.AllUsers.Take(rand)
-                ;
-            foreach (var u in users)
-                _vm.FoundUsers.Add(u);
         }
     }
 }

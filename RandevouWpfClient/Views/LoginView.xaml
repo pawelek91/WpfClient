@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandevouWpfClient.Views"
+         xmlns:ViewModels="clr-namespace:RandevouWpfClient.ViewModels"
         mc:Ignorable="d"
         Title="LoginView" Height="250" Width="400">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.DataContext>
+            <ViewModels:MainViewModel/>
+        </StackPanel.DataContext>
         <Label x:Name="loginStatusLbl" Content="Nie zalogowany" />
         <Grid Width="240" Margin="10,10,10,10">
             <Grid.RowDefinitions>
@@ -21,10 +25,11 @@
             <Label Content="Hasło" Grid.Row="1" Grid.Column="0" />
 
             <TextBox x:Name="loginNameTxtBox" Grid.Row="0" Grid.Column="1" />
-            <PasswordBox x:Name="loginPasswordTxtBox" PasswordChar="*"  Grid.Row="1" Grid.Column="1" />
+            <PasswordBox  x:Name="loginPasswordTxtBox" PasswordChar="*"  Grid.Row="1" Grid.Column="1" />
         </Grid>
         
-        <Button x:Name="loginBTN" Margin="0,30,0,10"  Content="Zaloguj" Width="150" />
+        <Button  x:Name="loginBTN" Margin="0,30,0,10"  Content="Zaloguj" Width="150"
+               Click="LoginBTN_Click" />
         
     </StackPanel>
    

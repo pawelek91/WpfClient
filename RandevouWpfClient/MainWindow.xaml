@@ -4,10 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandevouWpfClient"
+        xmlns:ViewModels="clr-namespace:RandevouWpfClient.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="600">
     <StackPanel>
-        <Button x:Name="showFriendsBTN" Click="ShowFriends_Click" Content="show friends"/>
-        <Button x:Name="findUsersBTN" Click="FindUsersBTN_Click" Content="find users"/>
+        <TabControl Height="500">
+            <TabItem Header="Wiadomości">
+                
+            </TabItem>
+            <TabItem Header="Znajomi">
+                
+            </TabItem>
+
+            <TabItem Header="Wyszukiwarka">
+                
+            </TabItem>
+        </TabControl>
+        <WrapPanel Height="40">
+            <WrapPanel.DataContext>
+                <ViewModels:MainViewModel />
+            </WrapPanel.DataContext>
+            <Button Content="Zaloguj" Width="120" Margin="10,5,10,5" Command="{Binding LoginCommand}"> </Button>
+            <Label Content="{Binding ZalogowanoField, Mode=OneWay}" Margin="10,5,10,5" />
+            <Button x:Name="RegisterUserBTN" HorizontalAlignment="Right"  Width="120" Margin="10,5,10,5" Content="Zarejestruj" Click="RegisterUserBTN_Click" />
+        </WrapPanel>
     </StackPanel>
 </Window>
