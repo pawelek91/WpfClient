@@ -49,7 +49,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -74,10 +73,10 @@
     <Compile Include="ViewModels\Commands\UserFriends\RemoveInvitationCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserInvitationCommand.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PrimaryViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="ViewModels\UserFriendsViewModel.cs" />
     <Compile Include="ViewModels\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\UserSearchViewModel.cs" />
