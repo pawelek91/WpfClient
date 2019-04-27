@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandevouWpfClient.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,12 @@ namespace RandevouWpfClient.Models
         public static void Message(String message)
         {
             MessageBox.Show(message);
+        }
+
+        public static void ProgressAction(Action act, string progressText)
+        {
+            var window = new OperationProgressWindow(act, progressText);
+            window.Show();
         }
     }
 }

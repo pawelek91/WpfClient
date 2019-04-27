@@ -9,9 +9,6 @@
         Title="RegisterView" Height="250" Width="500">
     <StackPanel>
         <Grid Width="300" Margin="20,20,20,20">
-            <!--<Grid.DataContext>
-                <VM:RegisterViewModel/>
-            </Grid.DataContext>-->
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />

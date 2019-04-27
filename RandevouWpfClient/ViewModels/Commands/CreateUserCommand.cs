@@ -1,4 +1,5 @@
 ﻿using RandevouApiCommunication.Users;
+using RandevouWpfClient.Models;
 using RandevouWpfClient.Views;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,11 @@ namespace RandevouWpfClient.ViewModels.Commands
                 Password = RegisterVm.Password,
             };
 
-            RegisterVm.CreateUser(dto);
+            ResultHandler.ProgressAction(() =>
+            {
+                RegisterVm.CreateUser(dto);
+
+            }, "Tworzenie konta");
             if (parameter is RegisterView view)
                 view.Close();
         }

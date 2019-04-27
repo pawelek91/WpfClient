@@ -20,7 +20,6 @@ namespace RandevouWpfClient.ViewModels
                 auth = value;
                 OnChanged(nameof(Auth));
                 OnChanged(nameof(ZalogowanoField));
-      
             }
         }
 

@@ -1,0 +1,13 @@
+﻿<Window x:Class="RandevouWpfClient.Views.OperationProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandevouWpfClient.Views"
+        mc:Ignorable="d"
+        Title="OperationProgressWindow" Height="150" Width="400">
+    <StackPanel>
+        <Label x:Name="progressLabel" Content="Proszę czekać" HorizontalAlignment="Center" />
+        <ProgressBar Height="20" Minimum="0" Maximum="100" Name="progressBar" Margin="30" />
+    </StackPanel>
+</Window>
