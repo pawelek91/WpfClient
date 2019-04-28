@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace RandevouWpfClient.ViewModels.Commands.UserFriends
 {
-    public class ShowUserInvitationCommand : ICommand
+    public class ShowUserInvitationCommand : BasicCommand
     {
         private readonly UserFriendsViewModel _vm;
         private readonly UserDetailsViewModel _userVm;
@@ -19,19 +19,8 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
             _vm = vm;
             _userVm = new UserDetailsViewModel();
         }
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
-            
-        }
-
-        public void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             if (_vm.InvitationChoosenUser == null)
             {

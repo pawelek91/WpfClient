@@ -28,7 +28,7 @@ namespace RandevouWpfClient.ViewModels.Commands
 
         public override void Execute(object parameter)
         {
-            var aqp = new ApiQueryProvider();
+            var aqp = ApiQueryProvider.GetInstance();
             try
             {
                 ResultHandler.ProgressAction(() =>

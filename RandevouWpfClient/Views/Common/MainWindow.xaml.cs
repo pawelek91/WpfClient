@@ -27,11 +27,6 @@ namespace RandevouWpfClient
         {
             InitializeComponent();
         }
-
-        private void RegisterUserBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new RegisterView(new ViewModels.RegisterViewModel());
-            window.Show();
-        }
+    
     }
 }

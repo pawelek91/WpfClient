@@ -1,6 +1,7 @@
 ﻿using RandevouApiCommunication;
 using RandevouApiCommunication.Authentication;
 using RandevouApiCommunication.Friendships;
+using RandevouApiCommunication.Messages;
 using RandevouApiCommunication.Users;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,17 @@ namespace RandevouWpfClient.Api
             _userId = userId;
         }
         ApiCommunicationProvider queryProvider;
-        public ApiQueryProvider()
+
+        private static ApiQueryProvider _apiQueryProvider;
+        
+        public static ApiQueryProvider GetInstance()
+        {
+            if (_apiQueryProvider == null)
+                _apiQueryProvider = new ApiQueryProvider();
+
+            return _apiQueryProvider;
+        }
+        private ApiQueryProvider()
         {
             queryProvider = ApiCommunicationProvider.GetInstance();
         }
@@ -47,13 +58,13 @@ namespace RandevouWpfClient.Api
         }
 
 
-        public IEnumerable<UsersDto> GetFriends(int id)
+        public IEnumerable<UsersDto> GetFriends()
         {
             var queryFriends = queryProvider.GetQueryProvider<IUserFriendshipQuery>();
             var queryUsers = queryProvider.GetQueryProvider<IUsersQuery>();
 
             var result = new List<UsersDto>();
-            var usersIdentities = queryFriends.GetFriends(id, _apiKey);
+            var usersIdentities = queryFriends.GetFriends(_userId, _apiKey);
 
             foreach(var userId in usersIdentities)
             {
@@ -64,19 +75,26 @@ namespace RandevouWpfClient.Api
             return result;
         }
 
-        public IEnumerable<UsersDto> GetInvitatios(int id)
+        public IEnumerable<UsersDto> GetInvitatios()
         {
             var queryFriends = queryProvider.GetQueryProvider<IUserFriendshipQuery>();
             var queryUsers = queryProvider.GetQueryProvider<IUsersQuery>();
 
             var result = new List<UsersDto>();
-            var usersIdentities = queryFriends.GetFriendshipRequests(id, _apiKey);
+            var usersIdentities = queryFriends.GetFriendshipRequests(_userId, _apiKey);
             foreach (var userId in usersIdentities)
             {
                 var dto = queryUsers.GetUser(userId, _apiKey);
                 if (dto != null)
                     result.Add(dto);
             }
+            return result;
+        }
+
+        public IEnumerable<LastMessagesDto> GetLastMessages()
+        {
+            var queryMessages = queryProvider.GetQueryProvider<IMessagesQuery>();
+            var result = queryMessages.GetLastMessages(_userId, _apiKey);
             return result;
         }
 

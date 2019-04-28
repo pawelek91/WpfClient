@@ -15,7 +15,7 @@ namespace RandevouWpfClient.ViewModels
         protected readonly ApiQueryProvider queryProvider;
         public PrimaryViewModel()
         {
-            queryProvider = new ApiQueryProvider();
+            queryProvider = ApiQueryProvider.GetInstance();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

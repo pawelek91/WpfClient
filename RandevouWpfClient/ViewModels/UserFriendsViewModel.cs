@@ -52,14 +52,14 @@ namespace RandevouWpfClient.ViewModels
 
         private void GetFriends()
         {
-            var friends = queryProvider.GetFriends(0);
+            var friends = queryProvider.GetFriends();
             foreach (var f in friends)
                 Friends.Add(f);
         }
 
         private void GetInvitations()
         {
-            foreach (var f in queryProvider.GetInvitatios(0))
+            foreach (var f in queryProvider.GetInvitatios())
                 Invitations.Add(f);
         }
     }

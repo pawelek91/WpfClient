@@ -18,7 +18,7 @@ namespace RandevouWpfClient.ViewModels
 
         public MessagesViewModel()
         {
-            //LastMessages = new ObservableCollection<LastMessagesDto>(queryProvider.GetLastMessages());
+            LastMessages = new ObservableCollection<LastMessagesDto>(queryProvider.GetLastMessages());
             GotoConversationCommand = new GotoConversationCommand(this);
         }
 
