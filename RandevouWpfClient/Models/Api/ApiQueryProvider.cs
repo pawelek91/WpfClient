@@ -3,6 +3,7 @@ using RandevouApiCommunication.Authentication;
 using RandevouApiCommunication.Friendships;
 using RandevouApiCommunication.Messages;
 using RandevouApiCommunication.Users;
+using RandevouApiCommunication.UsersFinder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,13 @@ namespace RandevouWpfClient.Api
             usersQuery.CreateUserWithLogin(dto);
         }
 
+        public UsersDto GetUser(int userId)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            var result = usersQuery.GetUser(userId, _apiKey);
+            return result;
+        }
+
 
         public IEnumerable<UsersDto> GetFriends()
         {
@@ -95,6 +103,13 @@ namespace RandevouWpfClient.Api
         {
             var queryMessages = queryProvider.GetQueryProvider<IMessagesQuery>();
             var result = queryMessages.GetLastMessages(_userId, _apiKey);
+            return result;
+        }
+
+        public IEnumerable<int> FindUsers(UsersFinderDto dto)
+        {
+            var queryFinder = queryProvider.GetQueryProvider<IUserFinderQuery>();
+            var result = queryFinder.FindUsers(dto, _apiKey);
             return result;
         }
 

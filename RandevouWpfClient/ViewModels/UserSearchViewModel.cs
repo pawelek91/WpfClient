@@ -27,6 +27,7 @@ namespace RandevouWpfClient.ViewModels
             FindUsersCommand = new FindUsersCommand(this);
             ShowSelectedCommand = new ShowSelectedUserCommand(this);
             FoundUsers = new ObservableCollection<UsersDto>();
+            Finder = new UsersFinderDto();
         }
     }
 }

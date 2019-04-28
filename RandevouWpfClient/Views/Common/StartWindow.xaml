@@ -15,7 +15,7 @@
         <TextBox x:Name="UserFieldTxtBox" Margin="10,2,10,10" Text="{Binding Username}" />
 
         <Label Content="Hasło" Margin="10,5,10,2" HorizontalAlignment="Center" />
-        <TextBox x:Name="PasswordFieldTxtBox" Margin="10,2,10,10" Text="{Binding Password}" />
+        <TextBox x:Name="PasswordFieldTxtBox" Margin="10,2,10,10" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
         
         <Button x:Name="LoginBTN" Content="Zaloguj" Margin="10,10,10,10" Command="{Binding LoginCMD}" />
         <Button x:Name="RegisterBTN" Content="Zarejestruj" Margin="10,50,10,20" Click="RegisterUserBTN_Click" />
