@@ -1,4 +1,5 @@
 ﻿using RandevouWpfClient.Api;
+using RandevouWpfClient.Models;
 using RandevouWpfClient.Views;
 using System;
 using System.Collections.Generic;
@@ -11,34 +12,35 @@ namespace RandevouWpfClient.ViewModels.Commands
 {
     public class LoginCommand : BasicCommand
     {
-        public MainViewModel MainVM{get;set;}
 
-        public LoginCommand(MainViewModel vm)
+        public StartViewModel VM { get; set; }
+
+        public LoginCommand(StartViewModel vm)
         {
-            MainVM = vm;
+            VM = vm;
         }
+
+
         public override bool CanExecute(object parameter)
-        {
-            return true;
-        }
+        => !String.IsNullOrWhiteSpace(VM.Username) && !String.IsNullOrWhiteSpace(VM.Password);
+
+
 
         public override void Execute(object parameter)
         {
-            var loginData = new LoginData();
-            var window = new LoginView(loginData);
-            var result = window.ShowDialog();
             var aqp = new ApiQueryProvider();
-            var loginResult = aqp.Login(loginData.Username, loginData.Password);
-            var userId = aqp.GetIdentity(loginResult);
+            try
+            { 
+                var loginResult = aqp.Login(VM.Username, VM.Password);
+                var userId = aqp.GetIdentity(loginResult);
+                aqp.SetUserData(loginResult, userId);
+                VM.LoginSuccessfull();
+            }
 
-
-            aqp.SetUserData(loginResult, userId);
-
-            MainVM.Auth = new Models.Api.Auth
+            catch(Exception ex)
             {
-                Key = loginResult,
-                User = loginData.Username
-            };           
+                ResultHandler.Exception(ex, "Nie udało się zalogować");
+            }
         }
     }
 

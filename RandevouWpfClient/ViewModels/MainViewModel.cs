@@ -37,7 +37,7 @@ namespace RandevouWpfClient.ViewModels
         public LoginCommand LoginCommand { get; set; }
         public MainViewModel()
         {
-            LoginCommand = new LoginCommand(this);
+            //LoginCommand = new LoginCommand(this);
         }
 
         public void Login()
