@@ -44,5 +44,29 @@ namespace RandevouWpfClient.Models
                 }
             }
         }
+
+        public static void KillProgressBarWindow()
+        {
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w.GetType().Assembly == currentAssembly && w is OperationProgressWindow)
+                {
+                    w.Close();
+                    break;
+                }
+            }
+        }
+
+        public static void ShowMainWindowDispatcher()
+        {
+            Application.Current.Dispatcher.Invoke(delegate
+            {
+                var window = new MainWindow();
+                CloseWindowOfWhichThereIsOnlyOne<Views.StartWindow>();
+                KillProgressBarWindow();
+                window.ShowDialog();
+            });
+        }
     }
 }

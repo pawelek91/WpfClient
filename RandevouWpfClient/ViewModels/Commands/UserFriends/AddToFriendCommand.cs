@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace RandevouWpfClient.ViewModels.Commands.UserFriends
 {
-    public class AddToFriendCommand : ICommand
+    public class AddToFriendCommand : BasicCommand
     {
         private readonly UserFriendsViewModel _vm;
         public AddToFriendCommand(UserFriendsViewModel vm)
@@ -15,14 +15,7 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
             _vm = vm;
         }
 
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
+         public override void Execute(object parameter)
         {
             if (_vm.InvitationChoosenUser != null)
             { 

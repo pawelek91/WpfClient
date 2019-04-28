@@ -7,22 +7,17 @@ using System.Windows.Input;
 
 namespace RandevouWpfClient.ViewModels.Commands.UserFinder
 {
-    public class FindUsersCommand : ICommand
+    public class FindUsersCommand : BasicCommand
     {
         private readonly UserSearchViewModel _vm;
 
-        public event EventHandler CanExecuteChanged;
 
         public FindUsersCommand(UserSearchViewModel vm)
         {
             _vm = vm;
         }
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
+ 
+        public override void Execute(object parameter)
         {
             FindUsers();
         }

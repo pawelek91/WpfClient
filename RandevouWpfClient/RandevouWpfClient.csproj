@@ -40,7 +40,7 @@
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="RandevouApiCommunication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\pawel\source\repos\RandevouApiCommunication\RandevouApiCommunication\bin\Debug\netstandard2.0\RandevouApiCommunication.dll</HintPath>
+      <HintPath>..\..\RandevouApiQuery\RandevouApiCommunication\bin\Debug\netstandard2.0\RandevouApiCommunication.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,6 +65,7 @@
     <Compile Include="Models\ResultHandler.cs" />
     <Compile Include="ViewModels\Commands\BasicCommand.cs" />
     <Compile Include="ViewModels\Commands\CreateUserCommand.cs" />
+    <Compile Include="ViewModels\Commands\Messages\GotoConversationCommand.cs" />
     <Compile Include="ViewModels\Commands\LoginCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFinder\FindUsersCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFinder\ShowSelectedUserCommand.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserInvitationCommand.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\PrimaryViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
@@ -91,6 +93,9 @@
     </Compile>
     <Compile Include="Views\Common\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Domain\MessagesView.xaml.cs">
+      <DependentUpon>MessagesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Domain\UserDetailsView.xaml.cs">
       <DependentUpon>UserDetailsView.xaml</DependentUpon>
@@ -129,6 +134,10 @@
     <Page Include="Views\Common\StartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Domain\MessagesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Domain\UserDetailsView.xaml">
       <SubType>Designer</SubType>

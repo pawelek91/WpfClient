@@ -30,11 +30,16 @@ namespace RandevouWpfClient.ViewModels.Commands
         {
             var aqp = new ApiQueryProvider();
             try
-            { 
-                var loginResult = aqp.Login(VM.Username, VM.Password);
-                var userId = aqp.GetIdentity(loginResult);
-                aqp.SetUserData(loginResult, userId);
-                VM.LoginSuccessfull();
+            {
+                ResultHandler.ProgressAction(() =>
+                {
+                    var loginResult = aqp.Login(VM.Username, VM.Password);
+                    var userId = aqp.GetIdentity(loginResult);
+                    aqp.SetUserData(loginResult, userId);
+                    VM.LoginSuccessfull();
+
+                }, "Logowanie");
+                
             }
 
             catch(Exception ex)

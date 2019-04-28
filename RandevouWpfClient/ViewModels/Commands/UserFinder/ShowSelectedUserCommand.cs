@@ -8,21 +8,15 @@ using System.Windows.Input;
 
 namespace RandevouWpfClient.ViewModels.Commands.UserFinder
 {
-    public class ShowSelectedUserCommand : ICommand
+    public class ShowSelectedUserCommand : BasicCommand
     {
         private readonly UserSearchViewModel _vm;
         public ShowSelectedUserCommand(UserSearchViewModel vm)
         {
             _vm = vm;
         }
-        public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
+        public override void Execute(object parameter)
         {
             if (_vm.SelectedUser == null)
                 return;

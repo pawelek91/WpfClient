@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandevouWpfClient.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -45,8 +46,9 @@ namespace RandevouWpfClient.Views
                 { 
                     _action();
                 }
-                catch
+                catch (Exception ex)
                 {
+                    ResultHandler.Exception(ex);
                     CloseWindow();
                 }
             };
