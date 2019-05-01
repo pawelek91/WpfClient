@@ -7,14 +7,14 @@
         xmlns:ViewModels="clr-namespace:RandevouWpfClient.ViewModels"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RandevouWpfClient.ViewModels"
-        Title="MainWindow" Height="600" Width="600">
+        Title="MainWindow" Height="900" Width="800">
     <StackPanel>
         <!--
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         @@@@@@@@@@@@@@@@@@@@@@@@@@ MESSAGES @@@@@@@@@@@@
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         -->
-        <TabControl Height="500">
+        <TabControl Height="Auto">
             <TabItem Header="Wiadomości">
                 <StackPanel x:Name="MessagesPanel">
                     <StackPanel.DataContext>
@@ -156,32 +156,25 @@
                     Command="{Binding FindUsersCommand }" />
 
                     <TextBlock Text="Wyniki wyszukiwania" Margin="50,50,50,50" HorizontalAlignment="Center" Foreground="Yellow" FontSize="20" />
-                    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <ListView x:Name="searchResultListView" ItemsSource="{Binding FoundUsers}" SelectedItem="{Binding SelectedUser}" Width="350" >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <WrapPanel  Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <DataGrid ItemsSource="{Binding FoundUsers}" AutoGenerateColumns="False" 
+                              SelectedItem="{Binding SelectedUser}" Width="350" Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nazwa" Width="120" Binding="{Binding Path=Name}" />
+                            <DataGridTextColumn Header="Data urodzin" Width="100" Binding="{Binding Path=BirthDate}" />
+                            <DataGridTextColumn Header="Płeć" Width="50" Binding="{Binding Path=Gender}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Label Content="{Binding Path=DisplayName}"/>
-                                        </StackPanel>
-                                        <StackPanel>
-                                            <Label Content="Urodzony: "/>
-                                            <Label Content="{Binding Path=BirthDate}"/>
-                                        </StackPanel>
-
-                                        <StackPanel>
-                                            <Label Content="Płeć: "/>
-                                            <Label Content="{Binding Path=Gender}"/>
-                                        </StackPanel>
-
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <Button Content="Wyświetl" Height="80" Background="DeepPink" Foreground="Yellow"
+                    <WrapPanel HorizontalAlignment="Center">
+                    <Button Content="Wyświetl" Height="30" Width="120" Margin="10,10" Background="DeepPink" Foreground="Yellow"
                    Command="{Binding ShowSelectedCommand}" />
+
+                        <Button Content="Wyślij zaproszenie" Height="30" Width="120" Margin="10,10"  Background="DeepPink" Foreground="Yellow"
+                    Command="{Binding SendFriendshipInvitationCommand}"
+                    CommandParameter="{Binding SelectedUser.Id}"    />
                     </WrapPanel>
+
+
                 </StackPanel>
             </TabItem>
         </TabControl>

@@ -1,6 +1,7 @@
 ﻿using RandevouApiCommunication.Users;
 using RandevouApiCommunication.UsersFinder;
 using RandevouWpfClient.ViewModels.Commands.UserFinder;
+using RandevouWpfClient.ViewModels.Commands.UserFriends;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,11 +13,12 @@ namespace RandevouWpfClient.ViewModels
 {
     public class UserSearchViewModel : PrimaryViewModel
     {
+        public SendFriendshipInvitationCommand SendFriendshipInvitationCommand { get; set; }
         public FindUsersCommand FindUsersCommand { get; set; }
         public ShowSelectedUserCommand ShowSelectedCommand { get; set; }
 
-        private UsersFinderDto finder;
-        public UsersFinderDto Finder { get => finder; set { finder = value; OnChanged(nameof(Finder)); } }
+        private SearchQueryDto finder;
+        public SearchQueryDto Finder { get => finder; set { finder = value; OnChanged(nameof(Finder)); } }
 
         private UsersDto selectedUser;
         public UsersDto SelectedUser { get => selectedUser; set { selectedUser = value; OnChanged(nameof(SelectedUser)); } }
@@ -27,7 +29,8 @@ namespace RandevouWpfClient.ViewModels
             FindUsersCommand = new FindUsersCommand(this);
             ShowSelectedCommand = new ShowSelectedUserCommand(this);
             FoundUsers = new ObservableCollection<UsersDto>();
-            Finder = new UsersFinderDto();
+            Finder = new SearchQueryDto();
+            SendFriendshipInvitationCommand = new SendFriendshipInvitationCommand();
         }
     }
 }

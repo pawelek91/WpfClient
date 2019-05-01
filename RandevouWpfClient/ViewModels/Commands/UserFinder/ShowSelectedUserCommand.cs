@@ -23,7 +23,7 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFinder
             var udViewModel = new UserDetailsViewModel() { User = _vm.SelectedUser };
 
             var window = new UserDetailsView(udViewModel);
-            window.Show();
+            window.ShowDialog();
         }
     }
 }

@@ -54,5 +54,8 @@
             <Label Content="{Binding Path=UserDetails.Heigth}" Grid.Column="1" Grid.Row="8" />
             <Label Content="{Binding Path=UserDetails.Tattos}" Grid.Column="1" Grid.Row="9" />
         </Grid>
+        <Button Content="Wyślij zaproszenie do znajomych" Width="200"
+                Command="{Binding SendFriendshipInvitationCommand}"
+                CommandParameter="{Binding User.Id}"    />
     </StackPanel>
 </Window>

@@ -72,6 +72,7 @@
     <Compile Include="ViewModels\Commands\UserFriends\AddToFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\RemoveFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\RemoveInvitationCommand.cs" />
+    <Compile Include="ViewModels\Commands\UserFriends\SendFriendshipInvitationCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserInvitationCommand.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

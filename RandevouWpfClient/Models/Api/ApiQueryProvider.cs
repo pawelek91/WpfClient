@@ -17,15 +17,6 @@ namespace RandevouWpfClient.Api
         private static string _apiKey;
         private static int _userId;
 
-        public void SetUserData(string apiKey, int userId)
-        {
-            _apiKey = apiKey;
-            _userId = userId;
-        }
-        ApiCommunicationProvider queryProvider;
-
-        private static ApiQueryProvider _apiQueryProvider;
-        
         public static ApiQueryProvider GetInstance()
         {
             if (_apiQueryProvider == null)
@@ -37,6 +28,17 @@ namespace RandevouWpfClient.Api
         {
             queryProvider = ApiCommunicationProvider.GetInstance();
         }
+
+        public void SetUserData(string apiKey, int userId)
+        {
+            _apiKey = apiKey;
+            _userId = userId;
+        }
+        ApiCommunicationProvider queryProvider;
+
+        private static ApiQueryProvider _apiQueryProvider;
+        
+     
 
         public string Login(string username, string password)
         {
@@ -62,6 +64,13 @@ namespace RandevouWpfClient.Api
         {
             var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
             var result = usersQuery.GetUser(userId, _apiKey);
+            return result;
+        }
+
+        public UserDetailsDto GetUserDetails(int userId)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            var result = usersQuery.GetUserDetails(userId, _apiKey);
             return result;
         }
 
@@ -106,10 +115,17 @@ namespace RandevouWpfClient.Api
             return result;
         }
 
-        public IEnumerable<int> FindUsers(UsersFinderDto dto)
+        public IEnumerable<int> FindUsers(SearchQueryDto dto)
         {
             var queryFinder = queryProvider.GetQueryProvider<IUserFinderQuery>();
             var result = queryFinder.FindUsers(dto, _apiKey);
+            return result;
+        }
+
+        public IEnumerable<UsersDto> GetManyUsers(int[] ids)
+        {
+            var queryUsers = queryProvider.GetQueryProvider<IUsersQuery>();
+            var result = queryUsers.GetManyUsers(_apiKey, ids);
             return result;
         }
 

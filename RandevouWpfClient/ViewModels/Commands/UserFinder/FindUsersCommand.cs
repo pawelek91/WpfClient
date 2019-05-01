@@ -22,14 +22,9 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFinder
         public override void Execute(object parameter)
         {
             var dto = _vm.Finder;
-
+            _vm.FoundUsers.Clear();
             var usersIds = _queryProvider.FindUsers(dto);
-            foreach (var id in usersIds)
-            {
-                var userDto = _queryProvider.GetUser(id);
-                if (userDto != null)
-                    _vm.FoundUsers.Add(userDto);
-            }
+            _queryProvider.GetManyUsers(usersIds.ToArray()).ToList().ForEach(x => _vm.FoundUsers.Add(x));           
         }
     }
 }
