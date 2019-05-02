@@ -37,11 +37,14 @@ namespace RandevouWpfClient.ViewModels.Commands
                 Password = RegisterVm.Password,
             };
 
-            ResultHandler.ProgressAction(() =>
+            var result = ResultHandler.ProgressAction(() =>
             {
                 RegisterVm.CreateUser(dto);
 
             }, "Tworzenie konta");
+            if (result == false)
+                ResultHandler.Message("Nie utworzono konta");
+
             if (parameter is RegisterView view)
                 view.Close();
         }

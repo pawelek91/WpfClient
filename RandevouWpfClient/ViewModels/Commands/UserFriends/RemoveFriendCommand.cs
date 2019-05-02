@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandevouWpfClient.Api;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
     public class RemoveFriendCommand : BasicCommand
     {
         private readonly UserFriendsViewModel _vm;
+        private readonly ApiQueryProvider aqp;
         public RemoveFriendCommand(UserFriendsViewModel vm)
         {
             _vm = vm;
@@ -18,7 +20,10 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
         public override void Execute(object parameter)
         {
             if(_vm.FriendsChoosenUser != null)
-            _vm.Friends.Remove(_vm.FriendsChoosenUser);
+            {
+                _vm.Friends.Remove(_vm.FriendsChoosenUser);
+            }
+           
         }
     }
 }

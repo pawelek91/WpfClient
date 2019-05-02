@@ -21,6 +21,7 @@ namespace RandevouWpfClient.Views
     /// </summary>
     public partial class OperationProgressWindow : Window
     {
+        public bool IsSuccess { get; private set; } = true;
         private Action _action;
         public OperationProgressWindow(Action action, string Text = "")
         {
@@ -49,6 +50,7 @@ namespace RandevouWpfClient.Views
                 catch (Exception ex)
                 {
                     ResultHandler.Exception(ex);
+                    IsSuccess = false;
                     CloseWindow();
                 }
             };

@@ -4,6 +4,7 @@ using RandevouApiCommunication.Friendships;
 using RandevouApiCommunication.Messages;
 using RandevouApiCommunication.Users;
 using RandevouApiCommunication.UsersFinder;
+using RandevouWpfClient.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +107,40 @@ namespace RandevouWpfClient.Api
                     result.Add(dto);
             }
             return result;
+        }
+
+        public void SendFriendshipInvitation(int toUserId)
+        {
+            var queryFriends = queryProvider.GetQueryProvider<IUserFriendshipQuery>();
+            queryFriends.PostFriendshipInvitation(new FriendshipSendRequestDto
+            {
+                FromUserId = _userId,
+                ToUserId = toUserId,
+            }, _apiKey);
+        }
+
+        public void AcceptFriendshipInvitation(int userSenderId)
+        {
+            var dto = new UpdateFriendshipStatusDto
+            {
+                FromUserId = _userId, //from = _userId bo akceptacja/odrzucenie idzie od zalogowanego!
+                ToUserId = userSenderId,
+                Action = Consts.Accept,
+            };
+            queryProvider.GetQueryProvider<IUserFriendshipQuery>()
+                .SetFriendshipStatusAction(dto, _apiKey);
+        }
+
+        public void RejectFriendshipInvitation(int userSenderId)
+        {
+            var dto = new UpdateFriendshipStatusDto
+            {
+                FromUserId = _userId,
+                ToUserId = userSenderId, //from = _userId bo akceptacja/odrzucenie idzie od zalogowanego!
+                Action = Consts.Delete,
+            };
+            queryProvider.GetQueryProvider<IUserFriendshipQuery>()
+                .SetFriendshipStatusAction(dto, _apiKey);
         }
 
         public IEnumerable<LastMessagesDto> GetLastMessages()

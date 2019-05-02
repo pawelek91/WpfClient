@@ -27,10 +27,11 @@ namespace RandevouWpfClient.Models
             MessageBox.Show(message);
         }
 
-        public static void ProgressAction(Action act, string progressText)
+        public static bool ProgressAction(Action act, string progressText)
         {
             var window = new OperationProgressWindow(act, progressText);
-            window.Show();
+            window.ShowDialog();
+            return window.IsSuccess;
         }
         public static void CloseWindowOfWhichThereIsOnlyOne<T>()
         {

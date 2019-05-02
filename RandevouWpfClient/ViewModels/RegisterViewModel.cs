@@ -16,6 +16,7 @@ namespace RandevouWpfClient.ViewModels
         public RegisterViewModel()
         {
             CreateUserCMD = new CreateUserCommand(this);
+            BirthDate = DateTime.Now;
         }
 
         private string name;
@@ -73,7 +74,7 @@ namespace RandevouWpfClient.ViewModels
                 birthdate = value;
                 OnChanged(nameof(BirthDate));
             }
-        }
+        } 
 
         public string Password { get; set; }
 
