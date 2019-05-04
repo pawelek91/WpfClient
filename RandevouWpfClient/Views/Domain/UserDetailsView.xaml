@@ -57,5 +57,8 @@
         <Button Content="Wyślij zaproszenie do znajomych" Width="200"
                 Command="{Binding SendFriendshipInvitationCommand}"
                 CommandParameter="{Binding User.Id}"    />
+        <Button Content="Wyślij wiadomość" Width="200" Margin="10" 
+                Command="{Binding GoToConversationCommand}"
+                CommandParameter="{Binding User.Id}"    />
     </StackPanel>
 </Window>

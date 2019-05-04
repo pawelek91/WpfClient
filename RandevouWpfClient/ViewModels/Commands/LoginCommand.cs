@@ -28,14 +28,14 @@ namespace RandevouWpfClient.ViewModels.Commands
 
         public override void Execute(object parameter)
         {
-            var aqp = ApiQueryProvider.GetInstance();
+            
             try
             {
                 ResultHandler.ProgressAction(() =>
                 {
-                    var loginResult = aqp.Login(VM.Username, VM.Password);
-                    var userId = aqp.GetIdentity(loginResult);
-                    aqp.SetUserData(loginResult, userId);
+                    var loginResult = QueryProvider.Login(VM.Username, VM.Password);
+                    var userId = QueryProvider.GetIdentity(loginResult);
+                    QueryProvider.SetUserData(loginResult, userId);
                     VM.LoginSuccessfull();
 
                 }, "Logowanie");

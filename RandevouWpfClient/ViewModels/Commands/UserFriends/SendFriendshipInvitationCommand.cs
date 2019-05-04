@@ -10,10 +10,8 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
 {
     public class SendFriendshipInvitationCommand : BasicCommand
     {
-        private readonly ApiQueryProvider _aqp;
         public SendFriendshipInvitationCommand()
         {
-            _aqp = ApiQueryProvider.GetInstance();
         }
         public override void Execute(object parameter)
         {
@@ -22,7 +20,7 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
 
             var result = ResultHandler.ProgressAction(() =>
             {
-                _aqp.SendFriendshipInvitation(userId);
+                QueryProvider.SendFriendshipInvitation(userId);
             }, "Wysyłanie zaproszenia");
 
             if (result)

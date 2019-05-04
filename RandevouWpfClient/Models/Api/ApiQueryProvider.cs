@@ -150,6 +150,32 @@ namespace RandevouWpfClient.Api
             return result;
         }
 
+        public IEnumerable<MessageDto> GetConversation(int speakerId, DateTime? from, DateTime? to)
+        {
+            var dto = new RequestMessagesDto
+            {
+                FirstUserId = _userId,
+                SecondUserId = speakerId,
+                FromDate = from,
+                ToDate = to,
+            };
+
+            var queryMessages = queryProvider.GetQueryProvider<IMessagesQuery>();
+            var result = queryMessages.GetConversation(dto, _apiKey);
+            return result;
+        }
+
+        public void SendMessage(int receiverId, string content)
+        {
+            var queryMessages = queryProvider.GetQueryProvider<IMessagesQuery>();
+            queryMessages.CreateMessage(new MessageDto
+            {
+                SenderId = _userId,
+                ReceiverId = receiverId,
+                Content = content,
+            }, _apiKey);
+        }
+
         public IEnumerable<int> FindUsers(SearchQueryDto dto)
         {
             var queryFinder = queryProvider.GetQueryProvider<IUserFinderQuery>();

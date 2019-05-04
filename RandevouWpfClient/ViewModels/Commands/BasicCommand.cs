@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandevouWpfClient.Api;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,9 @@ namespace RandevouWpfClient.ViewModels.Commands
 {
     public abstract class BasicCommand : ICommand
     {
+        protected ApiQueryProvider QueryProvider
+            => ApiQueryProvider.GetInstance();
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }

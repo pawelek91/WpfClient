@@ -1,4 +1,5 @@
 ﻿using RandevouApiCommunication.Users;
+using RandevouWpfClient.ViewModels.Commands.Messages;
 using RandevouWpfClient.ViewModels.Commands.UserFriends;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace RandevouWpfClient.ViewModels
 {
     public class UserDetailsViewModel : PrimaryViewModel
     {
+        public GotoConversationCommand GoToConversationCommand { get; set; }
         public SendFriendshipInvitationCommand SendFriendshipInvitationCommand { get; set; }
         private UserDetailsDto userDetails;
         public UserDetailsDto UserDetails
@@ -29,6 +31,7 @@ namespace RandevouWpfClient.ViewModels
         public UserDetailsViewModel()
         {
             SendFriendshipInvitationCommand = new SendFriendshipInvitationCommand();
+            GoToConversationCommand = new GotoConversationCommand();
         }
 
         private void GetUserDetails()
