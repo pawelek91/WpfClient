@@ -12,7 +12,14 @@ namespace RandevouWpfClient.ViewModels
     public class MessagesViewModel : PrimaryViewModel
     {
         public ObservableCollection<LastMessagesDto> LastMessages { get; set; }
-        public LastMessagesDto SelectedLastMessage { get; set; }
+
+        private LastMessagesDto selectedLastMessage;
+
+        public LastMessagesDto SelectedLastMessage
+        {
+            get { return selectedLastMessage; }
+            set { selectedLastMessage = value; OnChanged(nameof(SelectedLastMessage)); }
+        }
 
         public GotoConversationCommand GotoConversationCommand { get; set; }
 

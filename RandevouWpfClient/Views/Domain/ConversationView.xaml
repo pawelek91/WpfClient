@@ -10,18 +10,25 @@
     <StackPanel>
         <StackPanel Width="500">
             <Label Content="Nowa wiadomość" VerticalAlignment="Center" Width="100" />
-            <TextBlock Text="{Binding NewMessageContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="100" />
-            <Button Content="Wyślij"/>
+            <TextBox Text="{Binding NewMessageContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Height="100" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled"
+VerticalScrollBarVisibility="Auto" />
+            <Button Content="Wyślij" Command="{Binding SendMessageCommand}" />
         </StackPanel>
         <ListView ItemsSource="{Binding Conversation}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <WrapPanel>
-                            <TextBlock Text="{Binding SenderName}" />
-                            <TextBlock Text="{Binding SendDate}" />
+                        <Border BorderThickness="1" BorderBrush="Gray">
+                            <WrapPanel>
+                                <TextBlock Text="{Binding SenderName}" Margin="10,10,10,10"/>
+                                <TextBlock Text="{Binding SendDate}"  Margin="100,10,10,10" />
                         </WrapPanel>
-                        <TextBlock Text="{Binding Content}" />
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="Black">
+                            <TextBlock Text="{Binding Content}" />
+                        </Border>
+                        
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

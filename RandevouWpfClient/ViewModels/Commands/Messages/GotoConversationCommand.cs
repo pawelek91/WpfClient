@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandevouWpfClient.Views.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace RandevouWpfClient.ViewModels.Commands.Messages
             if (!(parameter is int userId))
                 return;
 
+            var view = new ConversationView(userId);
+            view.ShowDialog();
         }
     }
 }

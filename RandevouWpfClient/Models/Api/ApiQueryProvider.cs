@@ -54,10 +54,5 @@ namespace RandevouWpfClient.Api
             var id = authQuery.GetIdentity(apiKey);
             return id;
         }
-
-
-
-
-   
     }
 }

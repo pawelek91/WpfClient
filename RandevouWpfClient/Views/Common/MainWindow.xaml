@@ -21,7 +21,11 @@
                         <vm:MessagesViewModel/>
                     </StackPanel.DataContext>
                             <TextBlock Text="Wiadomości" FontSize="20" />
-                            <ListView x:Name="LastMessagesListView" ItemsSource="{Binding LastMessages}">
+                    <Button Content="Przejdź do konwersacji" Width="200" Margin="10" 
+                            Command="{Binding GotoConversationCommand}"
+                            CommandParameter="{Binding SelectedLastMessage.SpeakerId}"    />
+                    <ListView x:Name="LastMessagesListView" ItemsSource="{Binding LastMessages}"
+                              SelectedItem="{Binding SelectedLastMessage}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>

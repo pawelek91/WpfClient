@@ -19,7 +19,8 @@ namespace RandevouWpfClient.ViewModels.Commands
         }
         public override void Execute(object parameter)
         {
-            //QueryProvider
+            QueryProvider.SendMessage(_conversationVm._speakerId, _conversationVm.NewMessageContent);
+            _conversationVm.GetConverstation();
         }
     }
 }
