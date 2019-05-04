@@ -11,7 +11,6 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
     public class RemoveFriendCommand : BasicCommand
     {
         private readonly UserFriendsViewModel _vm;
-        private readonly ApiQueryProvider aqp;
         public RemoveFriendCommand(UserFriendsViewModel vm)
         {
             _vm = vm;

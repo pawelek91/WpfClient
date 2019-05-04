@@ -19,7 +19,7 @@ namespace RandevouWpfClient.ViewModels.Commands
         }
         public override void Execute(object parameter)
         {
-            QueryProvider
+            //QueryProvider
         }
     }
 }

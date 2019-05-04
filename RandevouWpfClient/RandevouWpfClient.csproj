@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Api\ApiQueryProvider.Friends.cs" />
+    <Compile Include="Models\Api\ApiQueryProvider.Messages.cs" />
     <Compile Include="Models\Api\Auth.cs" />
     <Compile Include="Models\Common\Consts.cs" />
     <Compile Include="Models\ResultHandler.cs" />
@@ -181,6 +183,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="Models\Api\ApiQueryProvider.Users.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
