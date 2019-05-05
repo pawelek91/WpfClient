@@ -29,6 +29,17 @@ namespace RandevouWpfClient.Api
             return result;
         }
 
+        public void RemoveFriend(int friendId)
+        {
+            var queryFriends = queryProvider.GetQueryProvider<IUserFriendshipQuery>();
+            queryFriends.SetFriendshipStatusAction(new UpdateFriendshipStatusDto
+            {
+                Action = Consts.Delete,
+                FromUserId = _userId,
+                ToUserId = friendId,
+            }, _apiKey);
+        }
+
         public IEnumerable<UsersDto> GetInvitatios()
         {
             var queryFriends = queryProvider.GetQueryProvider<IUserFriendshipQuery>();

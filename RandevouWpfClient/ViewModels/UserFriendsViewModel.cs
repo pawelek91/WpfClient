@@ -25,17 +25,32 @@ namespace RandevouWpfClient.ViewModels
         public UsersDto InvitationChoosenUser
         {
             get { return invitationChoosenUser; }
-            set { invitationChoosenUser = value;OnChanged(nameof(InvitationChoosenUser)); }
+            set
+            {
+                invitationChoosenUser = value;
+                OnChanged(nameof(InvitationChoosenUser));
+
+                if (value!=null)
+                {
+                    ShowUserInvitationCommand.Execute(InvitationChoosenUser);
+                }
+            }
         }
 
         private UsersDto friendsChoosenUser;
         public UsersDto FriendsChoosenUser
         {
             get { return friendsChoosenUser; }
-            set { friendsChoosenUser = value; OnChanged(nameof(FriendsChoosenUser)); }
+            set
+            { 
+                friendsChoosenUser = value;
+                OnChanged(nameof(FriendsChoosenUser));
+                if(value!=null)
+                {
+                    ShowUserFriendCommand.Execute(friendsChoosenUser);
+                }
+            }
         }
-
-
 
         public UserFriendsViewModel() :base()
         {
@@ -47,6 +62,7 @@ namespace RandevouWpfClient.ViewModels
 
             Friends = new ObservableCollection<UsersDto>();
             Invitations = new ObservableCollection<UsersDto>();
+            GetDataAndRefreshUI();
         }
 
         private void GetFriends()

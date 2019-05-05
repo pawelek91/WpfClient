@@ -18,7 +18,7 @@ namespace RandevouWpfClient.Api
         private static string _apiKey;
         private static int _userId;
 
-        
+
 
         public static ApiQueryProvider GetInstance()
         {

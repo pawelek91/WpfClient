@@ -22,13 +22,13 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
 
         public override void Execute(object parameter)
         {
-            if(_vm.FriendsChoosenUser==null)
+            if(_vm.FriendsChoosenUser==null && !(parameter is UsersDto))
             {
                 ResultHandler.Message("Not any user has been selected");
                 return;
             }
 
-            _userVm.User = _vm.FriendsChoosenUser;
+            _userVm.User = _vm.FriendsChoosenUser ?? parameter as UsersDto;
             var window = new UserDetailsView(_userVm);
             window.Show();
         }

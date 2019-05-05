@@ -20,7 +20,9 @@ namespace RandevouWpfClient.ViewModels.Commands.UserFriends
         {
             if(_vm.FriendsChoosenUser != null)
             {
+                QueryProvider.RemoveFriend(_vm.FriendsChoosenUser.Id.Value);
                 _vm.Friends.Remove(_vm.FriendsChoosenUser);
+                
             }
            
         }
