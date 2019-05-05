@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RandevouWpfClient.ViewModels
 {
@@ -36,7 +37,7 @@ namespace RandevouWpfClient.ViewModels
 
 
 
-        public UserFriendsViewModel()
+        public UserFriendsViewModel() :base()
         {
             ShowUserInvitationCommand = new ShowUserInvitationCommand(this);
             ShowUserFriendCommand = new ShowUserFriendCommand(this);
@@ -46,21 +47,29 @@ namespace RandevouWpfClient.ViewModels
 
             Friends = new ObservableCollection<UsersDto>();
             Invitations = new ObservableCollection<UsersDto>();
-            GetFriends();
-            GetInvitations();
         }
 
         private void GetFriends()
         {
+            Friends.Clear();
             var friends = queryProvider.GetFriends();
+
             foreach (var f in friends)
                 Friends.Add(f);
         }
 
         private void GetInvitations()
         {
+            Invitations.Clear();
+
             foreach (var f in queryProvider.GetInvitatios())
                 Invitations.Add(f);
+        }
+
+        protected override void GetDataAndRefreshUI()
+        {
+            GetFriends();
+            GetInvitations();
         }
     }
 }

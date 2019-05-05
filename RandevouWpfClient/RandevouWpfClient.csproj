@@ -80,7 +80,6 @@
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserFriendCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFriends\ShowUserInvitationCommand.cs" />
     <Compile Include="ViewModels\ConverstationViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\PrimaryViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
@@ -88,9 +87,6 @@
     <Compile Include="ViewModels\UserFriendsViewModel.cs" />
     <Compile Include="ViewModels\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\UserSearchViewModel.cs" />
-    <Compile Include="Views\Common\LoginView.xaml.cs">
-      <DependentUpon>LoginView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Common\OperationProgressWindow.xaml.cs">
       <DependentUpon>OperationProgressWindow.xaml</DependentUpon>
     </Compile>
@@ -128,10 +124,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Common\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Common\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

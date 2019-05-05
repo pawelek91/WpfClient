@@ -18,16 +18,31 @@ namespace RandevouWpfClient.ViewModels
         public LastMessagesDto SelectedLastMessage
         {
             get { return selectedLastMessage; }
-            set { selectedLastMessage = value; OnChanged(nameof(SelectedLastMessage)); }
+            set
+            {
+                selectedLastMessage = value;
+                OnChanged(nameof(SelectedLastMessage));
+
+                if (value != null)
+                    GotoConversationCommand.Execute(value.SpeakerId);
+            }
         }
 
         public GotoConversationCommand GotoConversationCommand { get; set; }
 
-        public MessagesViewModel()
+        public MessagesViewModel() : base()
         {
-            LastMessages = new ObservableCollection<LastMessagesDto>(queryProvider.GetLastMessages());
+            LastMessages = new ObservableCollection<LastMessagesDto>();
             GotoConversationCommand = new GotoConversationCommand();
         }
 
+        protected override void GetDataAndRefreshUI()
+        {
+            LastMessages.Clear();
+            foreach (var m in queryProvider.GetLastMessages())
+                LastMessages.Add(m);
+        }
+
+        protected override TimeSpan RefreshTime => new TimeSpan(0, 0, 3);
     }
 }

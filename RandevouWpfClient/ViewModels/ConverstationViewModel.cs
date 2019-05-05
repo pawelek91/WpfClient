@@ -30,7 +30,6 @@ namespace RandevouWpfClient.ViewModels
             _speakerId = speakerId;
             Conversation = new ObservableCollection<MessageDto>();
             SendMessageCommand = new SendMessageCommand(this);
-            GetConverstation();
         }
 
         public void GetConverstation()
@@ -40,5 +39,10 @@ namespace RandevouWpfClient.ViewModels
             foreach (var message in messages)
                 Conversation.Add(message);
         }
+
+        protected override TimeSpan RefreshTime => new TimeSpan(0, 0, 1);
+
+        protected override void GetDataAndRefreshUI()
+            => GetConverstation();
     }
 }
