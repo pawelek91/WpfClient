@@ -19,7 +19,7 @@ namespace RandevouWpfClient.ViewModels
         {
             queryProvider = ApiQueryProvider.GetInstance();
             GetDataAndRefreshUI();
-            Synchronize();
+            RunSynchronizeTask();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -34,10 +34,8 @@ namespace RandevouWpfClient.ViewModels
             }
         }
 
-        protected virtual async void Synchronize()
+        protected virtual async void RunSynchronizeTask()
         {
-            
-
             await Task.Run(() =>
             {
                 while (true)
@@ -47,11 +45,9 @@ namespace RandevouWpfClient.ViewModels
                     {
                         Application.Current.Dispatcher.Invoke(delegate
                         {
-
                             GetDataAndRefreshUI();
                         });
                         LastSyncrhonization = DateTime.Now;
-
                     }
                 }
             });
@@ -61,11 +57,7 @@ namespace RandevouWpfClient.ViewModels
 
         protected virtual TimeSpan RefreshTime => new TimeSpan(0, 0, 3);
 
-        protected virtual void GetDataAndRefreshUI()
-        {
-
-        }
-        
+        protected virtual void GetDataAndRefreshUI() { }
 
     }
 }
