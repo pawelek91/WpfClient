@@ -20,29 +20,30 @@ namespace RandevouWpfClient.Views
     /// <summary>
     /// Interaction logic for UserDetailsView.xaml
     /// </summary>
-    public partial class UserDetailsView : Window, INotifyPropertyChanged
+    public partial class UserDetailsView : Window//, INotifyPropertyChanged
     {
 
         
-        private UsersDto user;
+        //private UsersDto user;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        public UsersDto User
-        {
-            get { return user; }
-            set
-            {
-                user = value;
-                if(PropertyChanged!=null)
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(User)));
-            }
-        }
+        //public UsersDto User
+        //{
+        //    get { return user; }
+        //    set
+        //    {
+        //        user = value;
+        //        if(PropertyChanged!=null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs(nameof(User)));
+        //    }
+        //}
 
         public UserDetailsView(UserDetailsViewModel vm)
         {
-            DataContext = vm;
+            
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

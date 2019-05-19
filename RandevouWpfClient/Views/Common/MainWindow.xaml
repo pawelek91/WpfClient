@@ -15,6 +15,58 @@
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         -->
         <TabControl Height="Auto">
+            <TabItem Header="Mój profil">
+                <StackPanel Width="400" >
+                    <StackPanel.DataContext>
+                        <vm:MyProfileViewModel/>
+                    </StackPanel.DataContext>
+                    <Grid >
+                  
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Nazwa" Grid.Column="0" Grid.Row="0" />
+                    <Label Content="Data urodzenia" Grid.Column="0" Grid.Row="1" />
+                    <Label Content="Płeć" Grid.Column="0" Grid.Row="2" />
+                    <Label Content="Województwo" Grid.Column="0" Grid.Row="3" />
+                    <Label Content="Miasto" Grid.Column="0" Grid.Row="4" />
+                    <Label Content="Kolor oczu" Grid.Column="0" Grid.Row="5" />
+                    <Label Content="Kolor włosów" Grid.Column="0" Grid.Row="6" />
+                    <Label Content="Wzrost" Grid.Column="0" Grid.Row="7" />
+                    <Label Content="Waga" Grid.Column="0" Grid.Row="8" />
+                    <Label Content="Tatuaże" Grid.Column="0" Grid.Row="9" />
+
+                    <TextBlock Text="{Binding Path=MyProfileBasic.DisplayName}" Grid.Column="1" Grid.Row="0" />
+                    <TextBox Text="{Binding Path=MyProfileBasic.BirthDate}" Grid.Column="1" Grid.Row="1" />
+                    <TextBox Text="{Binding Path=MyProfileBasic.Gender}" Grid.Column="1" Grid.Row="2" />
+                    <TextBox Text="{Binding Path=MyProfile.Region}" Grid.Column="1" Grid.Row="3" />
+                    <TextBox Text="{Binding Path=MyProfile.City}" Grid.Column="1" Grid.Row="4" />
+                    <TextBox Text="{Binding Path=MyProfile.EyesColor}"  Grid.Column="1" Grid.Row="5" />
+                    <TextBox Text="{Binding Path=MyProfile.HairColor}" Grid.Column="1" Grid.Row="6" />
+                    <TextBox Text="{Binding Path=MyProfile.Width}" Grid.Column="1" Grid.Row="7" />
+                    <TextBox Text="{Binding Path=MyProfile.Heigth}" Grid.Column="1" Grid.Row="8" />
+                    <TextBox Text="{Binding Path=MyProfile.Tattos}" Grid.Column="1" Grid.Row="9" />
+                </Grid>
+                    <Button Content="Zapisz" Command="{Binding UpdateProfileCommand}" />
+                </StackPanel>
+            </TabItem>
             <TabItem Header="Wiadomości">
                 <StackPanel x:Name="MessagesPanel">
                     <StackPanel.DataContext>

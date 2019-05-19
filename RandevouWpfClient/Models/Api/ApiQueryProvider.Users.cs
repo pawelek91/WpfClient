@@ -18,6 +18,7 @@ namespace RandevouWpfClient.Api
             usersQuery.CreateUserWithLogin(dto);
         }
 
+
         public UsersDto GetUser(int userId)
         {
             var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
@@ -30,6 +31,23 @@ namespace RandevouWpfClient.Api
             var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
             var result = usersQuery.GetUserDetails(userId, _apiKey);
             return result;
+        }
+
+        public UsersDto GetMyProfileUser()
+            => GetUser(_userId);
+        public UserDetailsDto GetMyProfileUserDetails()
+             => GetUserDetails(_userId);
+
+        public void UpdateMyProfileUser(UserDetailsDto dto)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            usersQuery.UpdateUserDetails(_userId, dto, _apiKey);
+        }
+
+        public void UpdateMyProfileUserBasic(UsersDto dto)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            usersQuery.UpdateUser(dto, _apiKey);
         }
 
         public IEnumerable<UsersDto> GetManyUsers(int[] ids)
@@ -45,6 +63,10 @@ namespace RandevouWpfClient.Api
             var result = queryFinder.FindUsers(dto, _apiKey);
             return result;
         }
+
+
+
+
 
     }
 }
