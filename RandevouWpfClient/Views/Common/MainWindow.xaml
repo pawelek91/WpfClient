@@ -58,9 +58,28 @@
                     <TextBox Text="{Binding Path=MyProfileBasic.Gender}" Grid.Column="1" Grid.Row="2" />
                     <TextBox Text="{Binding Path=MyProfile.Region}" Grid.Column="1" Grid.Row="3" />
                     <TextBox Text="{Binding Path=MyProfile.City}" Grid.Column="1" Grid.Row="4" />
-                    <TextBox Text="{Binding Path=MyProfile.EyesColor}"  Grid.Column="1" Grid.Row="5" />
-                    <TextBox Text="{Binding Path=MyProfile.HairColor}" Grid.Column="1" Grid.Row="6" />
-                    <TextBox Text="{Binding Path=MyProfile.Width}" Grid.Column="1" Grid.Row="7" />
+
+                    <ComboBox ItemsSource="{Binding EyesColorsDictionary}" SelectedItem="{Binding MyProfileEyesColor}"  Grid.Column="1" Grid.Row="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding DisplayName}" />
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox ItemsSource="{Binding HairColorsDictionary}" SelectedItem="{Binding MyProfileHairColor}" Grid.Column="1" Grid.Row="6">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding DisplayName}" />
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                        <TextBox Text="{Binding Path=MyProfile.Width}" Grid.Column="1" Grid.Row="7" />
                     <TextBox Text="{Binding Path=MyProfile.Heigth}" Grid.Column="1" Grid.Row="8" />
                     <TextBox Text="{Binding Path=MyProfile.Tattos}" Grid.Column="1" Grid.Row="9" />
                 </Grid>

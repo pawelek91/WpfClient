@@ -40,7 +40,7 @@
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="RandevouApiCommunication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\pawel\source\repos\RandevouApiCommunication\RandevouApiCommunication\bin\Debug\netstandard2.0\RandevouApiCommunication.dll</HintPath>
+      <HintPath>..\..\RandevouApiQuery\RandevouApiCommunication\bin\Debug\netstandard2.0\RandevouApiCommunication.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Api\ApiQueryProvider.Friends.cs" />
     <Compile Include="Models\Api\ApiQueryProvider.Messages.cs" />
+    <Compile Include="Models\Api\ApiQueryProvider.UserDetails.cs" />
     <Compile Include="Models\Api\Auth.cs" />
     <Compile Include="Models\Common\Consts.cs" />
     <Compile Include="Models\ResultHandler.cs" />
