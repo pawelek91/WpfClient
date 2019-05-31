@@ -22,5 +22,12 @@ namespace RandevouWpfClient.Api
             var result = udQuery.GetHairColors(_apiKey);
             return result;
         }
+
+        public DictionaryItemDto[] GetAllInterests()
+        {
+            var udQuery = queryProvider.GetQueryProvider<IUsersDictionaryValuesQuery>();
+            var result = udQuery.GetInterests(_apiKey);
+            return result;
+        }
     }
 }

@@ -3,6 +3,7 @@ using RandevouApiCommunication.Users.DictionaryValues;
 using RandevouWpfClient.ViewModels.Commands.MyProfile;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,24 @@ namespace RandevouWpfClient.ViewModels
 {
     public class MyProfileViewModel : PrimaryViewModel
     {
+        private UsersDto myProfileBasic;
+        public UsersDto MyProfileBasic
+        {
+            get => myProfileBasic;
+            set { myProfileBasic = value; OnChanged(nameof(MyProfileBasic)); }
+        }
+
+        private UserDetailsDto myProfile;
+        public UserDetailsDto MyProfile
+        {
+            get => myProfile;
+            set { myProfile = value; OnChanged(nameof(MyProfile)); }
+        }
+
         public DictionaryItemDto[] EyesColorsDictionary { get; set; }
         public DictionaryItemDto[] HairColorsDictionary { get; set; }
+
+   
 
         private DictionaryItemDto myProfileHairColor;
 
@@ -39,44 +56,73 @@ namespace RandevouWpfClient.ViewModels
         }
 
 
-        private UserDetailsDto myProfile;
-        public UpdateMyProfileCommand UpdateProfileCommand { get; set; }
+        public DictionaryItemDto[] InterestDictionary { get; set; }
+        public ObservableCollection<DictionaryItemDto> MyProfileInteresets { get; set; }
 
-        private UsersDto myProfileBasic;
-        public UsersDto MyProfileBasic
+        private DictionaryItemDto myInterestSelectedItem;
+
+        public DictionaryItemDto MyInterestSelectedItem
         {
-            get => myProfileBasic;
-            set { myProfileBasic = value;OnChanged(nameof(MyProfileBasic)); }
+            get { return myInterestSelectedItem; }
+            set { myInterestSelectedItem = value; }
         }
-        public UserDetailsDto MyProfile
+
+        private DictionaryItemDto interestDictionarySelectedItem;
+
+        public DictionaryItemDto DictionaryInterestSelectedItem
         {
-            get => myProfile;
-            set { myProfile = value;OnChanged(nameof(MyProfile)); }
+            get { return interestDictionarySelectedItem; }
+            set { interestDictionarySelectedItem = value; }
         }
+
+
+        public UpdateMyProfileCommand UpdateProfileCommand { get; set; }
+        public MyProfileAddInterestCommand MyProfileAddInterestCommand { get; set; }
+        public MyProfileRemoveInterestCommand MyProfileRemoveInterestCommand { get; set; }
+
+
         public MyProfileViewModel()
         {
             MyProfileBasic = queryProvider.GetMyProfileUser();
             MyProfile = queryProvider.GetMyProfileUserDetails();
 
             UpdateProfileCommand = new UpdateMyProfileCommand(this);
+            MyProfileAddInterestCommand = new MyProfileAddInterestCommand(this);
+            MyProfileRemoveInterestCommand = new MyProfileRemoveInterestCommand(this);
+
+            MyProfileInteresets = new ObservableCollection<DictionaryItemDto>();
 
             EyesColorsDictionary = queryProvider.GetAllEyesColors();
             HairColorsDictionary = queryProvider.GetAllHairColors();
+            InterestDictionary = queryProvider.GetAllInterests();
 
-            AssignyProfileEyesColor(MyProfileEyesColor);
-            AssignMyProfileHairColor(MyProfileHairColor);
+            AssignyProfileEyesColor();
+            AssignMyProfileHairColor();
+            AssignMyProfileInteresets();
         }
 
-        private void AssignMyProfileHairColor(DictionaryItemDto myProfileHairColor)
+        private void AssignMyProfileHairColor()
         {
             if(MyProfile.HairColor.HasValue)
                 MyProfileHairColor = HairColorsDictionary.Single(x => x.Id == MyProfile.HairColor);
         }
 
-        private void AssignyProfileEyesColor(DictionaryItemDto myProfileEyesColor)
+        private void AssignyProfileEyesColor()
         {
             if(MyProfile.EyesColor.HasValue)
                 MyProfileEyesColor = EyesColorsDictionary.Single(x => x.Id == MyProfile.EyesColor);
+        }
+
+        private void AssignMyProfileInteresets()
+        {
+            if(MyProfile.Interests != null && MyProfile.Interests.Any())
+            {
+                var userInterests = InterestDictionary.Where(x => MyProfile.Interests.Contains(x.Id.Value));
+                foreach(var interest in userInterests)
+                {
+                    MyProfileInteresets.Add(interest);
+                }
+            }
         }
     }
 }

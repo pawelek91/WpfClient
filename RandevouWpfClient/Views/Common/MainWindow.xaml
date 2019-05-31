@@ -16,7 +16,7 @@
         -->
         <TabControl Height="Auto">
             <TabItem Header="Mój profil">
-                <StackPanel Width="400" >
+                <StackPanel Width="600" >
                     <StackPanel.DataContext>
                         <vm:MyProfileViewModel/>
                     </StackPanel.DataContext>
@@ -83,6 +83,38 @@
                     <TextBox Text="{Binding Path=MyProfile.Heigth}" Grid.Column="1" Grid.Row="8" />
                     <TextBox Text="{Binding Path=MyProfile.Tattos}" Grid.Column="1" Grid.Row="9" />
                 </Grid>
+                    <!-- interests -->
+                    <WrapPanel Width="550">
+                        <StackPanel>
+                            <Label Content="Zainteresowania" />
+                            <ListView ItemsSource="{Binding InterestDictionary}" SelectedItem="{Binding DictionaryInterestSelectedItem}" Height="200">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                        <Run Text="{Binding DisplayName}" />
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button Content="Dodaj do zainteresowań" Command="{Binding MyProfileAddInterestCommand}" />
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Content="Moje zainteresowania" />
+                            <ListView ItemsSource="{Binding MyProfileInteresets}" SelectedItem="{Binding MyInterestSelectedItem}" Height="200">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                        <Run Text="{Binding DisplayName}" />
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button Content="Usuń zainteresowannie" Command="{Binding MyProfileRemoveInterestCommand}" />
+                        </StackPanel>
+                    </WrapPanel>
+                    
+
                     <Button Content="Zapisz" Command="{Binding UpdateProfileCommand}" />
                 </StackPanel>
             </TabItem>
