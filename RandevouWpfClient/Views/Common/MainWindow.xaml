@@ -225,16 +225,16 @@
                     <StackPanel.DataContext>
                         <vm:UserSearchViewModel/>
                     </StackPanel.DataContext>
-                    <Grid DataContext="{Binding Finder, Mode=TwoWay}" Background="Pink" Height="70" Margin="10,20,10,20">
+                    <Grid  Background="Pink" Height="70" Margin="10,20,10,20">
+                        <!--DataContext="{Binding Finder, Mode=TwoWay}"-->
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition /><RowDefinition />
+                      
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition /><ColumnDefinition />
-                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition />
-                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition />
-                            <ColumnDefinition /><ColumnDefinition />
+                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition />
+                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /> <ColumnDefinition />
+                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /> <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Label Content="Nazwa" Grid.Row="0" Grid.Column="0"/>
                         <Label Content="Województwo" Grid.Row="0" Grid.Column="1"/>
@@ -246,17 +246,40 @@
                         <Label Content="Waga od" Grid.Row="0" Grid.Column="7"/>
                         <Label Content="Waga do" Grid.Row="0" Grid.Column="8"/>
                         <Label Content="Płeć" Grid.Row="0" Grid.Column="9"/>
+                        <Label Content="Kolor oczu" Grid.Row="0" Grid.Column="10"/>
+                        <Label Content="Kolor włosów" Grid.Row="0" Grid.Column="11"/>
 
-                        <TextBox Text="{Binding Path=Name}" Grid.Row="1" Grid.Column="0"/>
-                        <TextBox Text="{Binding Path=Region}" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox Text="{Binding Path=City}" Grid.Row="1" Grid.Column="2"/>
-                        <TextBox Text="{Binding Path=AgeFrom}" Grid.Row="1" Grid.Column="3"/>
-                        <TextBox Text="{Binding Path=AgeTo}" Grid.Row="1" Grid.Column="4"/>
-                        <TextBox Text="{Binding Path=HeightFrom}" Grid.Row="1" Grid.Column="5"/>
-                        <TextBox Text="{Binding Path=HeightTo}" Grid.Row="1" Grid.Column="6"/>
-                        <TextBox Text="{Binding Path=WidthFrom}" Grid.Row="1" Grid.Column="7"/>
-                        <TextBox Text="{Binding Path=WidthTo}" Grid.Row="1" Grid.Column="8"/>
-                        <TextBox Text="{Binding Path=Gender}" Grid.Row="1" Grid.Column="9"/>
+                        <TextBox Text="{Binding Path=Finder.Name}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBox Text="{Binding Path=Finder.Region}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBox Text="{Binding Path=Finder.City}" Grid.Row="1" Grid.Column="2"/>
+                        <TextBox Text="{Binding Path=Finder.AgeFrom}" Grid.Row="1" Grid.Column="3"/>
+                        <TextBox Text="{Binding Path=Finder.AgeTo}" Grid.Row="1" Grid.Column="4"/>
+                        <TextBox Text="{Binding Path=Finder.HeightFrom}" Grid.Row="1" Grid.Column="5"/>
+                        <TextBox Text="{Binding Path=Finder.HeightTo}" Grid.Row="1" Grid.Column="6"/>
+                        <TextBox Text="{Binding Path=Finder.WidthFrom}" Grid.Row="1" Grid.Column="7"/>
+                        <TextBox Text="{Binding Path=Finder.WidthTo}" Grid.Row="1" Grid.Column="8"/>
+                        <TextBox Text="{Binding Path=Finder.Gender}" Grid.Row="1" Grid.Column="9"/>
+
+                        <ComboBox ItemsSource="{Binding EyesColorsDictionary}" SelectedItem="{Binding SearchEyesColor}"  Grid.Column="10" Grid.Row="1">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                    <Run Text="{Binding DisplayName}" />
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <ComboBox ItemsSource="{Binding HairColorsDictionary}"
+                           SelectedItem="{Binding SearchHairColor}"  Grid.Column="11" Grid.Row="1">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                    <Run Text="{Binding DisplayName}" />
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                     <Button Content="Szukaj" 
                     Width="250" Height="40" Background="PaleVioletRed" Foreground="Wheat" FontSize="20" 
