@@ -10,5 +10,8 @@ namespace RandevouWpfClient.Models.Common
     {
         public const string Accept = nameof(Accept);
         public const string Delete = nameof(Delete);
+
     }
+
+   
 }

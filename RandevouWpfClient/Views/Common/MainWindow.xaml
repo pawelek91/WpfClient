@@ -258,7 +258,7 @@
                         <TextBox Text="{Binding Path=Finder.HeightTo}" Grid.Row="1" Grid.Column="6"/>
                         <TextBox Text="{Binding Path=Finder.WidthFrom}" Grid.Row="1" Grid.Column="7"/>
                         <TextBox Text="{Binding Path=Finder.WidthTo}" Grid.Row="1" Grid.Column="8"/>
-                        <TextBox Text="{Binding Path=Finder.Gender}" Grid.Row="1" Grid.Column="9"/>
+                        <ComboBox ItemsSource="{Binding Genders}" SelectedItem="{Binding ChoosenGender, Mode=TwoWay}"  Grid.Row="1" Grid.Column="9"/>
 
                         <ComboBox ItemsSource="{Binding EyesColorsDictionary}" SelectedItem="{Binding SearchEyesColor}"  Grid.Column="10" Grid.Row="1">
                             <ComboBox.ItemTemplate>

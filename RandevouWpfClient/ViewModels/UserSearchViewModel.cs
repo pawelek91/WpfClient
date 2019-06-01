@@ -73,5 +73,25 @@ namespace RandevouWpfClient.ViewModels
                 Finder.EyesColor = value.Id;
             }
         }
+
+        private string choosenGender;
+        public string ChoosenGender
+        {
+            get => choosenGender;
+            set
+            {
+                choosenGender = value;
+                if (value.Equals("Kobieta", StringComparison.CurrentCultureIgnoreCase))
+                    Finder.Gender = 'F';
+                else
+                    Finder.Gender = 'M';
+                OnChanged(ChoosenGender);
+            }
+        }
+
+        public IEnumerable<string> Genders
+        {
+            get { return new string[] { "Mężczyzna", "Kobieta" }; }
+        }
     }
 }
