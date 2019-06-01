@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RandevouWpfClient.ViewModels"
         xmlns:domainUC="clr-namespace:RandevouWpfClient.Views.Domain"
+        
         Title="MainWindow" Height="900" Width="800">
     <StackPanel>
 
@@ -30,92 +31,8 @@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             -->
 
-            <TabItem Header="Wyszukiwarka">
-                <StackPanel>
-                    <StackPanel.DataContext>
-                        <vm:UserSearchViewModel/>
-                    </StackPanel.DataContext>
-                    <Grid  Background="Pink" Height="70" Margin="10,20,10,20">
-                        <!--DataContext="{Binding Finder, Mode=TwoWay}"-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition /><RowDefinition />
-                      
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition />
-                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /> <ColumnDefinition />
-                            <ColumnDefinition /><ColumnDefinition /><ColumnDefinition /> <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Label Content="Nazwa" Grid.Row="0" Grid.Column="0"/>
-                        <Label Content="Województwo" Grid.Row="0" Grid.Column="1"/>
-                        <Label Content="Miasto" Grid.Row="0" Grid.Column="2"/>
-                        <Label Content="Wiek od" Grid.Row="0" Grid.Column="3"/>
-                        <Label Content="Wiek do" Grid.Row="0" Grid.Column="4"/>
-                        <Label Content="Wzrost od" Grid.Row="0" Grid.Column="5"/>
-                        <Label Content="Wzrost do" Grid.Row="0" Grid.Column="6"/>
-                        <Label Content="Waga od" Grid.Row="0" Grid.Column="7"/>
-                        <Label Content="Waga do" Grid.Row="0" Grid.Column="8"/>
-                        <Label Content="Płeć" Grid.Row="0" Grid.Column="9"/>
-                        <Label Content="Kolor oczu" Grid.Row="0" Grid.Column="10"/>
-                        <Label Content="Kolor włosów" Grid.Row="0" Grid.Column="11"/>
-
-                        <TextBox Text="{Binding Path=Finder.Name}" Grid.Row="1" Grid.Column="0"/>
-                        <TextBox Text="{Binding Path=Finder.Region}" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox Text="{Binding Path=Finder.City}" Grid.Row="1" Grid.Column="2"/>
-                        <TextBox Text="{Binding Path=Finder.AgeFrom}" Grid.Row="1" Grid.Column="3"/>
-                        <TextBox Text="{Binding Path=Finder.AgeTo}" Grid.Row="1" Grid.Column="4"/>
-                        <TextBox Text="{Binding Path=Finder.HeightFrom}" Grid.Row="1" Grid.Column="5"/>
-                        <TextBox Text="{Binding Path=Finder.HeightTo}" Grid.Row="1" Grid.Column="6"/>
-                        <TextBox Text="{Binding Path=Finder.WidthFrom}" Grid.Row="1" Grid.Column="7"/>
-                        <TextBox Text="{Binding Path=Finder.WidthTo}" Grid.Row="1" Grid.Column="8"/>
-                        <ComboBox ItemsSource="{Binding Genders}" SelectedItem="{Binding ChoosenGender, Mode=TwoWay}"  Grid.Row="1" Grid.Column="9"/>
-
-                        <ComboBox ItemsSource="{Binding EyesColorsDictionary}" SelectedItem="{Binding SearchEyesColor}"  Grid.Column="10" Grid.Row="1">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                    <Run Text="{Binding DisplayName}" />
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-
-                        <ComboBox ItemsSource="{Binding HairColorsDictionary}"
-                           SelectedItem="{Binding SearchHairColor}"  Grid.Column="11" Grid.Row="1">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                    <Run Text="{Binding DisplayName}" />
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </Grid>
-                    <Button Content="Szukaj" 
-                    Width="250" Height="40" Background="PaleVioletRed" Foreground="Wheat" FontSize="20" 
-                    Command="{Binding FindUsersCommand }" />
-
-                    <TextBlock Text="Wyniki wyszukiwania" Margin="50,50,50,50" HorizontalAlignment="Center" Foreground="Yellow" FontSize="20" />
-                    <DataGrid ItemsSource="{Binding FoundUsers}" AutoGenerateColumns="False" 
-                              SelectedItem="{Binding SelectedUser}" Width="350" Height="350">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Nazwa" Width="120" Binding="{Binding Path=Name}" />
-                            <DataGridTextColumn Header="Data urodzin" Width="100" Binding="{Binding Path=BirthDate}" />
-                            <DataGridTextColumn Header="Płeć" Width="50" Binding="{Binding Path=Gender}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-
-                    <WrapPanel HorizontalAlignment="Center">
-                    <Button Content="Wyświetl" Height="30" Width="120" Margin="10,10" Background="DeepPink" Foreground="Yellow"
-                   Command="{Binding ShowSelectedCommand}" />
-
-                        <Button Content="Wyślij zaproszenie" Height="30" Width="120" Margin="10,10"  Background="DeepPink" Foreground="Yellow"
-                    Command="{Binding SendFriendshipInvitationCommand}"
-                    CommandParameter="{Binding SelectedUser.Id}"    />
-                    </WrapPanel>
-
-
-                </StackPanel>
+            <TabItem Header="Wyszukiwarka" >
+                <domainUC:UserFinderUC/>
             </TabItem>
         </TabControl>
 
