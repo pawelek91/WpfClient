@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RandevouWpfClient.Views
+namespace RandevouWpfClient.Views.Domain
 {
     /// <summary>
-    /// Logika interakcji dla klasy UserFriends.xaml
+    /// Interaction logic for MessagesUC.xaml
     /// </summary>
-    public partial class UserFriendsView : Window
+    public partial class MessagesUC : UserControl
     {
-        public UserFriendsView()
+        public MessagesUC()
         {
             InitializeComponent();
         }

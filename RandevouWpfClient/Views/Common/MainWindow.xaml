@@ -15,30 +15,9 @@
             <TabItem Header="Mój profil">
                 <domainUC:MyProfileUC/>
             </TabItem>
-            <TabItem Header="Wiadomości">
-                <StackPanel x:Name="MessagesPanel">
-                    <StackPanel.DataContext>
-                        <vm:MessagesViewModel/>
-                    </StackPanel.DataContext>
-                            <TextBlock Text="Wiadomości" FontSize="20" />
-                    <Button Content="Przejdź do konwersacji" Width="200" Margin="10" 
-                            Command="{Binding GotoConversationCommand}"
-                            CommandParameter="{Binding SelectedLastMessage.SpeakerId}"    />
-                    <ListView x:Name="LastMessagesListView" ItemsSource="{Binding LastMessages}"
-                              SelectedItem="{Binding SelectedLastMessage}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <WrapPanel>
-                                                <Label Content="{Binding SpeakerName, Mode=TwoWay}" />
-                                                <Label Content="{Binding MessageDate, Mode=TwoWay}" />
-                                            </WrapPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
 
-                            </ListView>
-                </StackPanel>
+            <TabItem Header="Wiadomości" >
+                <domainUC:MessagesUC/>
             </TabItem>
            
             <TabItem Header="Znajomi" >

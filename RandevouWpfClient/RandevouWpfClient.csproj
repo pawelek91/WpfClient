@@ -103,8 +103,8 @@
     <Compile Include="Views\Domain\ConversationView.xaml.cs">
       <DependentUpon>ConversationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Domain\MessagesView.xaml.cs">
-      <DependentUpon>MessagesView.xaml</DependentUpon>
+    <Compile Include="Views\Domain\MessagesUC.xaml.cs">
+      <DependentUpon>MessagesUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Domain\MyProfileUC.xaml.cs">
       <DependentUpon>MyProfileUC.xaml</DependentUpon>
@@ -114,12 +114,6 @@
     </Compile>
     <Compile Include="Views\Domain\UserFriendsUC.xaml.cs">
       <DependentUpon>UserFriendsUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Domain\UserFriendsView.xaml.cs">
-      <DependentUpon>UserFriendsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Domain\UserSearchView.xaml.cs">
-      <DependentUpon>UserSearchView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Common\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -150,7 +144,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Domain\MessagesView.xaml">
+    <Page Include="Views\Domain\MessagesUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -163,14 +157,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Domain\UserFriendsUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Domain\UserFriendsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Domain\UserSearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
