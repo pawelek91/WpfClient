@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="RandevouWpfClient.Views.Domain.MyProfileUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RandevouWpfClient.Views.Domain"
+             xmlns:ViewModels="clr-namespace:RandevouWpfClient.ViewModels"
+              xmlns:vm="clr-namespace:RandevouWpfClient.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+        <StackPanel Width="600" >
+            <StackPanel.DataContext>
+                <vm:MyProfileViewModel/>
+            </StackPanel.DataContext>
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Nazwa" Grid.Column="0" Grid.Row="0" />
+                <Label Content="Data urodzenia" Grid.Column="0" Grid.Row="1" />
+                <Label Content="Płeć" Grid.Column="0" Grid.Row="2" />
+                <Label Content="Województwo" Grid.Column="0" Grid.Row="3" />
+                <Label Content="Miasto" Grid.Column="0" Grid.Row="4" />
+                <Label Content="Kolor oczu" Grid.Column="0" Grid.Row="5" />
+                <Label Content="Kolor włosów" Grid.Column="0" Grid.Row="6" />
+                <Label Content="Wzrost" Grid.Column="0" Grid.Row="7" />
+                <Label Content="Waga" Grid.Column="0" Grid.Row="8" />
+                <Label Content="Tatuaże" Grid.Column="0" Grid.Row="9" />
+
+                <TextBlock Text="{Binding Path=MyProfileBasic.DisplayName}" Grid.Column="1" Grid.Row="0" />
+                <TextBox Text="{Binding Path=MyProfileBasic.BirthDate}" Grid.Column="1" Grid.Row="1" />
+                <TextBox Text="{Binding Path=MyProfileBasic.Gender}" Grid.Column="1" Grid.Row="2" />
+                <TextBox Text="{Binding Path=MyProfile.Region}" Grid.Column="1" Grid.Row="3" />
+                <TextBox Text="{Binding Path=MyProfile.City}" Grid.Column="1" Grid.Row="4" />
+
+                <ComboBox ItemsSource="{Binding EyesColorsDictionary}" SelectedItem="{Binding MyProfileEyesColor}"  Grid.Column="1" Grid.Row="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                    <Run Text="{Binding DisplayName}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox ItemsSource="{Binding HairColorsDictionary}" SelectedItem="{Binding MyProfileHairColor}" Grid.Column="1" Grid.Row="6">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                    <Run Text="{Binding DisplayName}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBox Text="{Binding Path=MyProfile.Width}" Grid.Column="1" Grid.Row="7" />
+                <TextBox Text="{Binding Path=MyProfile.Heigth}" Grid.Column="1" Grid.Row="8" />
+                <TextBox Text="{Binding Path=MyProfile.Tattos}" Grid.Column="1" Grid.Row="9" />
+            </Grid>
+            <!-- interests -->
+            <WrapPanel Width="550">
+                <StackPanel>
+                    <Label Content="Zainteresowania" />
+                    <ListView ItemsSource="{Binding InterestDictionary}" SelectedItem="{Binding DictionaryInterestSelectedItem}" Height="200">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                        <Run Text="{Binding DisplayName}" />
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Content="Dodaj do zainteresowań" Command="{Binding MyProfileAddInterestCommand}" />
+                </StackPanel>
+
+                <StackPanel>
+                    <Label Content="Moje zainteresowania" />
+                    <ListView ItemsSource="{Binding MyProfileInteresets}" SelectedItem="{Binding MyInterestSelectedItem}" Height="200">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                        <Run Text="{Binding DisplayName}" />
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Content="Usuń zainteresowannie" Command="{Binding MyProfileRemoveInterestCommand}" />
+                </StackPanel>
+            </WrapPanel>
+
+
+            <Button Content="Zapisz" Command="{Binding UpdateProfileCommand}" />
+        </StackPanel>
+</UserControl>
