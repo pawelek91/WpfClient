@@ -112,6 +112,9 @@
     <Compile Include="Views\Domain\UserDetailsView.xaml.cs">
       <DependentUpon>UserDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Domain\UserFriendsUC.xaml.cs">
+      <DependentUpon>UserFriendsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Domain\UserFriendsView.xaml.cs">
       <DependentUpon>UserFriendsView.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Domain\UserDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Domain\UserFriendsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
