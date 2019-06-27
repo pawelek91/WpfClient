@@ -84,12 +84,20 @@
 
             <TextBlock Text="Wyniki wyszukiwania" Margin="50,50,50,50" HorizontalAlignment="Center" Foreground="Yellow" FontSize="20" />
             <DataGrid ItemsSource="{Binding FoundUsers}" AutoGenerateColumns="False" 
-                              SelectedItem="{Binding SelectedUser}" Width="350" Height="350">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nazwa" Width="120" Binding="{Binding Path=Name}" />
-                    <DataGridTextColumn Header="Data urodzin" Width="100" Binding="{Binding Path=BirthDate}" />
-                    <DataGridTextColumn Header="Płeć" Width="50" Binding="{Binding Path=Gender}" />
-                </DataGrid.Columns>
+                              SelectedItem="{Binding SelectedUser}" Width="650" Height="350">
+            
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="100" Header="Avatar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="100" Source="{Binding Avatar}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Nazwa" Width="250" Binding="{Binding Path=DisplayName}" />
+                <DataGridTextColumn Header="Wiek" Width="*" Binding="{Binding Path=Age}" />
+                <DataGridTextColumn Header="Płeć" Width="*" Binding="{Binding Path=Gender}" />
+            </DataGrid.Columns>
             </DataGrid>
 
             <WrapPanel HorizontalAlignment="Center">

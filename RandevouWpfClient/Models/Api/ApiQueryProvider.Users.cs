@@ -71,7 +71,12 @@ namespace RandevouWpfClient.Api
             usersQuery.SetAvatar(_userId, stream, contentType, _apiKey);
         }
 
-
+        public IEnumerable<UserAvatarDto> GetUsersAvatars(IEnumerable<int> userIds)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            var result = usersQuery.GetUsersAvatars(userIds, _apiKey);
+            return result;
+        }
 
 
 

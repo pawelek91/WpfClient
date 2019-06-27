@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\UserFriendsViewModel.cs" />
     <Compile Include="ViewModels\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\UserSearchViewModel.cs" />
+    <Compile Include="ViewModels\UsersSearchResultViewModel.cs" />
     <Compile Include="Views\Common\OperationProgressWindow.xaml.cs">
       <DependentUpon>OperationProgressWindow.xaml</DependentUpon>
     </Compile>

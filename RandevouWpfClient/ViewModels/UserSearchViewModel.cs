@@ -24,12 +24,12 @@ namespace RandevouWpfClient.ViewModels
         private UsersDto selectedUser;
         public UsersDto SelectedUser { get => selectedUser; set { selectedUser = value; OnChanged(nameof(SelectedUser)); } }
 
-        public ObservableCollection<UsersDto> FoundUsers { get; set; }
+        public ObservableCollection<UsersSearchResultViewModel> FoundUsers { get; set; }
         public UserSearchViewModel()
         {
             FindUsersCommand = new FindUsersCommand(this);
             ShowSelectedCommand = new ShowSelectedUserCommand(this);
-            FoundUsers = new ObservableCollection<UsersDto>();
+            FoundUsers = new ObservableCollection<UsersSearchResultViewModel>();
             Finder = new SearchQueryDto();
             SendFriendshipInvitationCommand = new SendFriendshipInvitationCommand();
 
