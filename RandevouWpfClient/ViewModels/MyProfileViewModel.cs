@@ -1,6 +1,7 @@
 ﻿using RandevouApiCommunication.Users;
 using RandevouApiCommunication.Users.DictionaryValues;
 using RandevouWpfClient.Models;
+using RandevouWpfClient.Models.Common;
 using RandevouWpfClient.ViewModels.Commands.MyProfile;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,8 @@ namespace RandevouWpfClient.ViewModels
         public MyProfileAddInterestCommand MyProfileAddInterestCommand { get; set; }
         public MyProfileRemoveInterestCommand MyProfileRemoveInterestCommand { get; set; }
 
+        public SetAvatarCommand SetAvatarCommand { get; set; }
+
 
         private BitmapImage avatar;
         public BitmapImage Avatar
@@ -90,27 +93,46 @@ namespace RandevouWpfClient.ViewModels
             set
             {
                 avatar = value;
-                OnChanged(nameof(avatar));
+                OnChanged(nameof(Avatar));
             }
         }
 
-        private void GetAvatar()
+        private void GetAvatar(bool RefreshUserDetails = false)
         {
+            if (RefreshUserDetails)
+                UpdateMyProfileDetails();
 
             if (MyProfile.AvatarImage != null && MyProfile.AvatarImage.Length > 0 && !string.IsNullOrWhiteSpace(MyProfile.AvatarContentType))
             {
-                Avatar = ResultHandler.GetImageFromBytes(MyProfile.AvatarImage);
+                Avatar = FileHandler.GetImageFromBytes(MyProfile.AvatarImage);
+            }
+        }
+
+        public void GetAvatar(Byte[] content)
+        {
+            if (content != null & content.Length > 0)
+            {
+                try
+                {
+                    Avatar = FileHandler.GetImageFromBytes(content);
+                }
+                catch
+                {
+                    GetAvatar(RefreshUserDetails:true);
+                }
+                
             }
         }
 
         public MyProfileViewModel()
         {
             MyProfileBasic = queryProvider.GetMyProfileUser();
-            MyProfile = queryProvider.GetMyProfileUserDetails();
+            UpdateMyProfileDetails();
 
             UpdateProfileCommand = new UpdateMyProfileCommand(this);
             MyProfileAddInterestCommand = new MyProfileAddInterestCommand(this);
             MyProfileRemoveInterestCommand = new MyProfileRemoveInterestCommand(this);
+            SetAvatarCommand = new SetAvatarCommand(this);
 
             MyProfileInteresets = new ObservableCollection<DictionaryItemDto>();
 
@@ -121,9 +143,15 @@ namespace RandevouWpfClient.ViewModels
             AssignyProfileEyesColor();
             AssignMyProfileHairColor();
             AssignMyProfileInteresets();
-
             GetAvatar();
         }
+
+        private void UpdateMyProfileDetails()
+        {
+            MyProfile = queryProvider.GetMyProfileUserDetails();
+        }
+
+
 
         private void AssignMyProfileHairColor()
         {

@@ -1,5 +1,6 @@
 ﻿using RandevouApiCommunication.Users;
 using RandevouWpfClient.Models;
+using RandevouWpfClient.Models.Common;
 using RandevouWpfClient.ViewModels.Commands.Messages;
 using RandevouWpfClient.ViewModels.Commands.UserFriends;
 using System;
@@ -57,7 +58,7 @@ namespace RandevouWpfClient.ViewModels
 
             if(UserDetails.AvatarImage != null && UserDetails.AvatarImage.Length > 0 && !string.IsNullOrWhiteSpace(UserDetails.AvatarContentType))
             {
-                Avatar = ResultHandler.GetImageFromBytes(UserDetails.AvatarImage);
+                Avatar = FileHandler.GetImageFromBytes(UserDetails.AvatarImage);
             }
         }
 

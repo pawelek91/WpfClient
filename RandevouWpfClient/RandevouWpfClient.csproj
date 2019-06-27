@@ -66,12 +66,14 @@
     <Compile Include="Models\Api\ApiQueryProvider.UserDetails.cs" />
     <Compile Include="Models\Api\Auth.cs" />
     <Compile Include="Models\Common\Consts.cs" />
+    <Compile Include="Models\Common\FileHandler.cs" />
     <Compile Include="Models\Common\ResultHandler.cs" />
     <Compile Include="ViewModels\Commands\BasicCommand.cs" />
     <Compile Include="ViewModels\Commands\CreateUserCommand.cs" />
     <Compile Include="ViewModels\Commands\Messages\GotoConversationCommand.cs" />
     <Compile Include="ViewModels\Commands\LoginCommand.cs" />
     <Compile Include="ViewModels\Commands\MyProfile\ProfileInterestCommands.cs" />
+    <Compile Include="ViewModels\Commands\MyProfile\SetAvatarCommand.cs" />
     <Compile Include="ViewModels\Commands\MyProfile\UpdateMyProfileCommand.cs" />
     <Compile Include="ViewModels\Commands\SendMessageCommand.cs" />
     <Compile Include="ViewModels\Commands\UserFinder\FindUsersCommand.cs" />

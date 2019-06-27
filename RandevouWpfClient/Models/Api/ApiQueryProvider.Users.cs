@@ -7,6 +7,7 @@ using RandevouApiCommunication.UsersFinder;
 using RandevouWpfClient.Models.Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace RandevouWpfClient.Api
 {
@@ -62,6 +63,12 @@ namespace RandevouWpfClient.Api
             var queryFinder = queryProvider.GetQueryProvider<IUserFinderQuery>();
             var result = queryFinder.FindUsers(dto, _apiKey);
             return result;
+        }
+
+        public void SetAvatar(Stream stream, string contentType)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            usersQuery.SetAvatar(_userId, stream, contentType, _apiKey);
         }
 
 
