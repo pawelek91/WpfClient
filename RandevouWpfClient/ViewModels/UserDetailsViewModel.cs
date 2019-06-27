@@ -1,4 +1,5 @@
 ﻿using RandevouApiCommunication.Users;
+using RandevouWpfClient.Models;
 using RandevouWpfClient.ViewModels.Commands.Messages;
 using RandevouWpfClient.ViewModels.Commands.UserFriends;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace RandevouWpfClient.ViewModels
 {
@@ -28,6 +30,18 @@ namespace RandevouWpfClient.ViewModels
             set { user = value; OnChanged(nameof(User)); GetUserDetails(); }
         }
 
+        private BitmapImage avatar;
+
+        public BitmapImage Avatar
+        {
+            get => avatar;
+            set
+            {
+                avatar = value;
+                OnChanged(nameof(avatar));
+            }
+        }
+
         public UserDetailsViewModel()
         {
             SendFriendshipInvitationCommand = new SendFriendshipInvitationCommand();
@@ -40,6 +54,11 @@ namespace RandevouWpfClient.ViewModels
                 return;
 
             UserDetails = queryProvider.GetUserDetails(User.Id.Value);
+
+            if(UserDetails.AvatarImage != null && UserDetails.AvatarImage.Length > 0 && !string.IsNullOrWhiteSpace(UserDetails.AvatarContentType))
+            {
+                Avatar = ResultHandler.GetImageFromBytes(UserDetails.AvatarImage);
+            }
         }
 
 

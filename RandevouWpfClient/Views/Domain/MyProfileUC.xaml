@@ -12,7 +12,10 @@
             <StackPanel.DataContext>
                 <vm:MyProfileViewModel/>
             </StackPanel.DataContext>
-            <Grid >
+        
+            <Image x:Name="previewImage" x:FieldModifier="public" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Path=Avatar}" Stretch="Fill" />
+        <Button Content="Ustaw avatar" Command="" />
+        <Grid >
 
                 <Grid.RowDefinitions>
                     <RowDefinition />

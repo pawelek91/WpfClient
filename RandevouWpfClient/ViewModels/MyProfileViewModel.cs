@@ -1,5 +1,6 @@
 ﻿using RandevouApiCommunication.Users;
 using RandevouApiCommunication.Users.DictionaryValues;
+using RandevouWpfClient.Models;
 using RandevouWpfClient.ViewModels.Commands.MyProfile;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace RandevouWpfClient.ViewModels
 {
@@ -81,6 +83,26 @@ namespace RandevouWpfClient.ViewModels
         public MyProfileRemoveInterestCommand MyProfileRemoveInterestCommand { get; set; }
 
 
+        private BitmapImage avatar;
+        public BitmapImage Avatar
+        {
+            get => avatar;
+            set
+            {
+                avatar = value;
+                OnChanged(nameof(avatar));
+            }
+        }
+
+        private void GetAvatar()
+        {
+
+            if (MyProfile.AvatarImage != null && MyProfile.AvatarImage.Length > 0 && !string.IsNullOrWhiteSpace(MyProfile.AvatarContentType))
+            {
+                Avatar = ResultHandler.GetImageFromBytes(MyProfile.AvatarImage);
+            }
+        }
+
         public MyProfileViewModel()
         {
             MyProfileBasic = queryProvider.GetMyProfileUser();
@@ -99,6 +121,8 @@ namespace RandevouWpfClient.ViewModels
             AssignyProfileEyesColor();
             AssignMyProfileHairColor();
             AssignMyProfileInteresets();
+
+            GetAvatar();
         }
 
         private void AssignMyProfileHairColor()
